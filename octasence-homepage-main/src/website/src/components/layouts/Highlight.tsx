@@ -41,26 +41,7 @@ const Highlight = () => {
           />
         </div>
 
-        <div className="octa-pill mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-          Recognition
-        </div>
-        <h2 className="text-[18px] font-semibold mb-4 text-white/80">
-          Google.org Leaders to Watch 2022
-        </h2>
-        <p className="octa-heading text-[24px] lg:text-[28px] mb-8">
-          From expanding equity in education to addressing environmental issues,
-          this year&apos;s Leaders to Watch are building a better future for
-          everyone.
-        </p>
-        <Link
-          href="https://www.google.org/leaders-to-watch-2022/#engineer-bainomugisha"
-          target="_blank"
-          className="inline-flex items-center gap-2 py-3 px-6 text-sm rounded-full octa-button-secondary transition-all hover:bg-white/10 focus:outline-none"
-        >
-          Learn more
-          <span aria-hidden="true">-&gt;</span>
-        </Link>
+
       </div>
     </div>
   );

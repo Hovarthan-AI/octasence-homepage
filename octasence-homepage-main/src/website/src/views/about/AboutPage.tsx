@@ -24,7 +24,7 @@ const FOUNDERS: Founder[] = [
     role: 'Co-Founder & CTO',
     tagline:
       'Twenty years shipping agentic platforms—from PropTech to SHM—for mission-critical systems.',
-    imageSrc: '/assets/images/WhatsApp Image 2026-03-13 at 17.00.48.jpeg',
+    imageSrc: '/assets/images/WhatsApp Image 2026-03-13 at 17.11.13.jpeg',
   },
   {
     name: 'Wolfgang Staufer',
