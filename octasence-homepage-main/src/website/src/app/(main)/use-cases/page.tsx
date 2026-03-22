@@ -74,7 +74,12 @@ function CaseCard({
           >
             {/* Sector icon */}
             <div style={{ position: 'absolute', top: 16, left: 16, zIndex: 2 }}>
-              <span className="sector-tag">{cs.tag}</span>
+              <span className="sector-tag">
+                <span className="mr-1.5 opacity-90" aria-hidden>
+                  {ICONS[cs.tag] ?? '•'}
+                </span>
+                {cs.tag}
+              </span>
             </div>
             {/* Case number */}
             <div

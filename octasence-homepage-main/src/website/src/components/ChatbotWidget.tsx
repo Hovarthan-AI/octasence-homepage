@@ -3,6 +3,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 
+import { sendOctasenceChatMessage } from '@/hooks/useOctasenceChat';
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Message {
   id: string;
@@ -196,29 +198,13 @@ const ChatbotWidget: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Call our secure server-side proxy — the API key never touches the browser.
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userText }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      const outputText: string =
-        data?.reply ??
-        "I'm sorry, I couldn't generate a response. Please try again.";
-
+      const { reply } = await sendOctasenceChatMessage(userText);
       setMessages((prev) => [
         ...prev,
         {
           id: (Date.now() + 1).toString(),
           role: 'bot',
-          text: String(outputText),
+          text: reply,
           timestamp: new Date(),
         },
       ]);

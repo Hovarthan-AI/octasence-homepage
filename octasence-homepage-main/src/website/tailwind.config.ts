@@ -10,6 +10,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      spacing: {
+        'octa-section': 'var(--octa-space-section-y)',
+      },
       backgroundImage: {
         'card-custom-gradient':
           'linear-gradient(150.48deg, #F2F1F6 45.54%, #EEF7FF 100%)',

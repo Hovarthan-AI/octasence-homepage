@@ -480,7 +480,7 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
         }
       });
     },
-    [N],
+    [N, CX, CY, R],
   );
 
   useEffect(() => {

@@ -531,16 +531,15 @@ export const METADATA_CONFIGS = {
     },
   },
   about: {
-    title:
-      'About AirQo | Uganda Air Quality Research - Makerere University Innovation Since 2015',
+    title: 'About Octasence | Agentic AI for Infrastructure Intelligence',
     description:
-      "Founded at Makerere University, Uganda - Africa's #1 air quality monitoring network. Operating in Kampala, Nairobi, Lagos, Accra with 200+ sensors. $4.3M Google.org funding. Serving 60M+ people across Uganda, Kenya, Nigeria, Ghana, Rwanda, Tanzania. Led by Prof. Engineer Bainomugisha.",
+      'Meet the Octasence team: founders and operators building AI-driven structural health monitoring and geotechnical intelligence for mining, dams, tunnels, and critical infrastructure worldwide.',
     keywords:
-      'About AirQo Uganda, Makerere University research, air quality innovation Uganda, Kampala environmental research, AirQo team Kenya, Professor Bainomugisha Uganda, air pollution monitoring Africa, Uganda environmental technology, Kenya air quality research, Nigeria pollution initiative, Ghana clean air, Google.org Africa partnership, World Bank Uganda, EPIC Air Quality Fund Africa, Uganda innovation, East Africa air research, environmental technology Uganda, Kampala innovation hub, African scientists air quality',
+      'Octasence about, infrastructure AI, structural health monitoring, geotechnical intelligence, agentic AI infrastructure, Octasence founders, SHM platform, mining monitoring, dam safety AI',
     url: '/about-us',
     image: {
-      url: 'https://res.cloudinary.com/dbibjvyhm/image/upload/v1757015506/website/photos/about/teamImage_ganc1y_tyu1ft.webp',
-      alt: 'AirQo Team at Makerere University - Leading Air Quality Research in Africa',
+      url: 'https://res.cloudinary.com/dbibjvyhm/image/upload/v1728132435/website/photos/AirQuality_meyioj.webp',
+      alt: 'Octasence — infrastructure intelligence platform',
       width: 1200,
       height: 630,
       type: 'image/webp',

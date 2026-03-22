@@ -2,7 +2,7 @@
 
 import { isBefore, parseISO } from 'date-fns';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import {
   FiArrowRight,
@@ -18,6 +18,14 @@ import {
 
 import mainConfig from '@/configs/mainConfigs';
 import { useCareers, useDepartments } from '@/hooks/useApiHooks';
+
+const GLOBE_OFFICE_LOCATIONS: { name: string; lat: number; lon: number }[] = [
+  { name: 'London', lat: 51.5, lon: -0.11 },
+  { name: 'US', lat: 39.0, lon: -98.0 },
+  { name: 'India', lat: 28.6, lon: 77.2 },
+  { name: 'Australia', lat: -33.8, lon: 151.2 },
+  { name: 'Asia', lat: 35.0, lon: 105.0 },
+];
 
 // Helper component for the 3D Canvas Globe
 const Globe: React.FC<{ rotationOffset: number; isDragging: boolean }> = ({
@@ -60,14 +68,6 @@ const Globe: React.FC<{ rotationOffset: number; isDragging: boolean }> = ({
     return points;
   }, []);
 
-  const locations = [
-    { name: 'London', lat: 51.5, lon: -0.11 },
-    { name: 'US', lat: 39.0, lon: -98.0 },
-    { name: 'India', lat: 28.6, lon: 77.2 },
-    { name: 'Australia', lat: -33.8, lon: 151.2 },
-    { name: 'Asia', lat: 35.0, lon: 105.0 },
-  ];
-
   React.useEffect(() => {
     dragOffsetRef.current = rotationOffset;
   }, [rotationOffset]);
@@ -108,7 +108,7 @@ const Globe: React.FC<{ rotationOffset: number; isDragging: boolean }> = ({
       }
       ctx.globalAlpha = 1.0;
 
-      locations.forEach((loc) => {
+      GLOBE_OFFICE_LOCATIONS.forEach((loc) => {
         const phi = (90 - loc.lat) * (Math.PI / 180);
         const theta = (loc.lon + 180) * (Math.PI / 180);
         const dx = Math.sin(phi) * Math.cos(theta);
@@ -158,7 +158,6 @@ const Globe: React.FC<{ rotationOffset: number; isDragging: boolean }> = ({
 };
 
 const CareerPage: React.FC = () => {
-  const router = useRouter();
   const {
     data: departmentsPage,
     isLoading: departmentsLoading,
@@ -173,10 +172,12 @@ const CareerPage: React.FC = () => {
     isLoading: careersLoading,
   } = useCareers();
 
+  const careersFetchError = departmentsError ?? careersError;
+
   const careers = careersData?.results ?? [];
 
   const [selectedDepartmentId, setSelectedDepartmentId] =
-    useState<string>('all'); // Default to All
+    useState<string>('all');
 
   // Add "Open Positions" to the departments list
   const allDepartments = [
@@ -198,29 +199,20 @@ const CareerPage: React.FC = () => {
   const filteredJobs = (careers ?? []).filter((career: any) => {
     const isOpen = isJobOpen(career.closing_date);
     if (selectedDepartmentId === 'all') return isOpen;
-    return isOpen && career.department?.id == selectedDepartmentId;
+    return (
+      isOpen &&
+      String(career.department?.id ?? '') === String(selectedDepartmentId)
+    );
   });
-
-  // Group the jobs by department and filter only open jobs
-  const groupedJobsByDepartment = filteredJobs?.reduce((acc: any, job: any) => {
-    // Fix: job.department is already an object with name property
-    const departmentName = job.department?.name || 'Open Positions';
-    if (!acc[departmentName]) {
-      acc[departmentName] = { jobs: [], openCount: 0 };
-    }
-    acc[departmentName].openCount++;
-    acc[departmentName].jobs.push(job);
-    return acc;
-  }, {});
 
   // Show loading skeletons
   const isLoading = departmentsLoading || careersLoading;
 
   const scrollToPositions = () => {
-    const element = document.getElementById('open-positions');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    const el =
+      document.getElementById('open-roles') ??
+      document.getElementById('open-positions');
+    el?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const [rotation, setRotation] = useState(0);
@@ -442,14 +434,10 @@ const CareerPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="pt-4 md:pt-6">
+          <div className="pt-4 md:pt-6 flex flex-col items-center gap-4">
             <button
-              onClick={() =>
-                window.open(
-                  'https://www.linkedin.com/company/octasence/jobs/',
-                  '_blank',
-                )
-              }
+              type="button"
+              onClick={scrollToPositions}
               className="group relative px-8 py-4 md:px-10 md:py-5 bg-[#4338ca] hover:bg-[#3d46ab] text-white rounded-full font-black text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-[0_20px_50px_rgba(67,56,202,0.4)] flex items-center gap-4 mx-auto"
             >
               Open Positions
@@ -458,6 +446,14 @@ const CareerPage: React.FC = () => {
                 className="group-hover:translate-x-2 transition-transform"
               />
             </button>
+            <a
+              href="https://www.linkedin.com/company/octasence/jobs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-indigo-300/90 hover:text-white underline underline-offset-4"
+            >
+              View roles on LinkedIn
+            </a>
           </div>
         </div>
       </header>
@@ -526,6 +522,117 @@ const CareerPage: React.FC = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 md:w-64 h-[20px] md:h-[30px] bg-indigo-400/20 blur-xl md:blur-2xl rounded-full" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 md:w-3 md:h-3 rounded-full bg-white shadow-[0_0_20px_rgba(129,140,248,1)]" />
           </div>
+        </div>
+
+        {/* Role listings from API */}
+        <div
+          id="open-roles"
+          className="px-4 lg:px-8 pb-10 md:pb-16 w-full max-w-4xl mx-auto space-y-6 scroll-mt-24"
+        >
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl md:text-3xl font-black text-white">
+              Open roles
+            </h2>
+            <p className="text-sm text-slate-400">
+              Filter by team and apply to roles that are still accepting
+              applications.
+            </p>
+          </div>
+
+          {careersFetchError && (
+            <div
+              className="rounded-2xl border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-100"
+              role="alert"
+            >
+              We couldn&apos;t refresh job listings right now. You can still
+              browse roles on{' '}
+              <a
+                href="https://www.linkedin.com/company/octasence/jobs/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+              >
+                LinkedIn
+              </a>
+              .
+            </div>
+          )}
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+            <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
+              Department
+            </label>
+            <select
+              value={selectedDepartmentId}
+              onChange={(e) => setSelectedDepartmentId(e.target.value)}
+              className="w-full sm:max-w-xs rounded-xl border border-white/10 bg-white/5 text-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/60"
+            >
+              {allDepartments.map(
+                (d: { id: string | number; name: string }) => (
+                  <option
+                    key={String(d.id)}
+                    value={String(d.id)}
+                    className="bg-[#0f172a]"
+                  >
+                    {d.name}
+                  </option>
+                ),
+              )}
+            </select>
+          </div>
+
+          {isLoading ? (
+            <div className="space-y-3 animate-pulse">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="h-16 rounded-2xl bg-white/5 border border-white/5"
+                />
+              ))}
+            </div>
+          ) : filteredJobs.length === 0 ? (
+            <p className="text-center text-slate-400 text-sm py-8">
+              No open roles match this filter. Try another department or check
+              LinkedIn for the latest postings.
+            </p>
+          ) : (
+            <ul className="space-y-3">
+              {filteredJobs.map((job: any) => {
+                const slug =
+                  job.public_identifier || job.publicIdentifier || job.id || '';
+                const inner = (
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                      <p className="text-white font-semibold">{job.title}</p>
+                      <p className="text-xs text-slate-400 mt-1">
+                        {job.department?.name ?? 'General'}{' '}
+                        {job.location?.name ? `· ${job.location.name}` : ''}
+                      </p>
+                    </div>
+                    <span className="text-indigo-300 text-sm font-medium shrink-0">
+                      {slug ? 'View role →' : 'Details unavailable'}
+                    </span>
+                  </div>
+                );
+                return (
+                  <li key={job.id ?? job.title}>
+                    {slug ? (
+                      <Link
+                        href={`/careers/${slug}`}
+                        className="block rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] px-5 py-4 transition-colors"
+                      >
+                        {inner}
+                      </Link>
+                    ) : (
+                      <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 opacity-80">
+                        {inner}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
 
         {/* Globe Section */}
