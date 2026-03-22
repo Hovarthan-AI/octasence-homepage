@@ -1,12 +1,5 @@
 /* eslint-disable simple-import-sort/imports */
-import {
-  Database,
-  FileText,
-  Globe,
-  Monitor,
-  Star,
-  HandCoins,
-} from 'lucide-react';
+import { Database, File, Globe, Monitor, Star, HandCoins } from 'lucide-react';
 /* eslint-enable simple-import-sort/imports */
 
 export const accordionItems = {
@@ -79,7 +72,7 @@ export const statItems = [
     label: 'Engineering Reports',
     key: 'engineering_reports',
     value: 200,
-    icon: FileText,
+    icon: File,
     color: '#8B5CF6',
   },
   {

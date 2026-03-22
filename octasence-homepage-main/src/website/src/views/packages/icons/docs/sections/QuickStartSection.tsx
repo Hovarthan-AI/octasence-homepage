@@ -13,14 +13,21 @@ export default function App() {
     <Home
       size={24}
       color="#0284C7"
+    <Home
+      size={24}
+      color="#0284C7"
     />
   );
 }`,
     vue: `<script setup>
 import { Home } from 'lucide-vue';
+import { Home } from 'lucide-vue';
 </script>
 
 <template>
+  <Home
+    :size="24"
+    color="#0284C7"
   <Home
     :size="24"
     color="#0284C7"
@@ -39,9 +46,13 @@ import { Home } from 'lucide-vue';
       <p className="text-gray-600 mb-6">
         Import icons directly from the package. Icons are named in PascalCase
         (e.g.,{' '}
+        Import icons directly from the package. The icons are named using
+        PascalCase (e.g.,{' '}
         <code className="mx-1 bg-gray-100 px-1.5 py-0.5 rounded text-gray-800 text-sm font-mono">
           Home
+          Home
         </code>
+        ).
         ).
       </p>
 
@@ -49,21 +60,19 @@ import { Home } from 'lucide-vue';
         <div className="flex border-b border-gray-800">
           <button
             onClick={() => setActiveTab('react')}
-            className={`px-6 py-3 text-sm font-medium transition-colors ${
-              activeTab === 'react'
-                ? 'bg-gray-800 text-white border-b-2 border-blue-500'
-                : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
-            }`}
+            className={`px-6 py-3 text-sm font-medium transition-colors ${activeTab === 'react'
+              ? 'bg-gray-800 text-white border-b-2 border-blue-500'
+              : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+              }`}
           >
             React
           </button>
           <button
             onClick={() => setActiveTab('vue')}
-            className={`px-6 py-3 text-sm font-medium transition-colors ${
-              activeTab === 'vue'
-                ? 'bg-gray-800 text-white border-b-2 border-green-500'
-                : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
-            }`}
+            className={`px-6 py-3 text-sm font-medium transition-colors ${activeTab === 'vue'
+              ? 'bg-gray-800 text-white border-b-2 border-green-500'
+              : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+              }`}
           >
             Vue 3
           </button>

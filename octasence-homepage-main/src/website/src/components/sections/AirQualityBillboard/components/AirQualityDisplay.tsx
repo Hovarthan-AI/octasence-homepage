@@ -1,14 +1,13 @@
-import {
-  AqGood,
-  AqHazardous,
-  AqModerate,
-  AqNoValue,
-  AqUnhealthy,
-  AqUnhealthyForSensitiveGroups,
-  AqVeryUnhealthy,
-  AqWind01,
-} from '@airqo/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import {
+  AlertTriangle,
+  Frown,
+  HelpCircle,
+  Meh,
+  Skull,
+  Smile,
+  Wind,
+} from 'lucide-react';
 import Image from 'next/image';
 import { FiMapPin } from 'react-icons/fi';
 
@@ -56,23 +55,23 @@ const AirQualityDisplay = ({
     };
 
     if (pm25 === null || pm25 === undefined) {
-      return <AqNoValue {...iconProps} />;
+      return <HelpCircle {...iconProps} />;
     }
 
     if (pm25 >= 0 && pm25 <= 9) {
-      return <AqGood {...iconProps} />;
+      return <Smile {...iconProps} />;
     } else if (pm25 > 9 && pm25 <= 35) {
-      return <AqModerate {...iconProps} />;
+      return <Meh {...iconProps} />;
     } else if (pm25 > 35 && pm25 <= 55) {
-      return <AqUnhealthyForSensitiveGroups {...iconProps} />;
+      return <Frown {...iconProps} />;
     } else if (pm25 > 55 && pm25 <= 125) {
-      return <AqUnhealthy {...iconProps} />;
+      return <Frown {...iconProps} />;
     } else if (pm25 > 125 && pm25 <= 225) {
-      return <AqVeryUnhealthy {...iconProps} />;
+      return <AlertTriangle {...iconProps} />;
     } else if (pm25 > 225 && pm25 <= 500.5) {
-      return <AqHazardous {...iconProps} />;
+      return <Skull {...iconProps} />;
     } else {
-      return <AqNoValue {...iconProps} />;
+      return <HelpCircle {...iconProps} />;
     }
   };
 
@@ -165,7 +164,7 @@ const AirQualityDisplay = ({
                       </div>
                     ) : (
                       <div style={{ width: '100%', height: '100%' }}>
-                        <AqNoValue className="w-full h-full" />
+                        <HelpCircle className="w-full h-full" />
                       </div>
                     )}
                   </div>
@@ -220,7 +219,7 @@ const AirQualityDisplay = ({
                     height: 'clamp(1rem, 1.5vw, 1.5rem)',
                   }}
                 >
-                  <AqWind01 className="text-white w-full h-full" />
+                  <Wind className="text-white w-full h-full" />
                 </div>
               </div>
               <span

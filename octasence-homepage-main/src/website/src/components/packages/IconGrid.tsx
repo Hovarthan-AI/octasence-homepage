@@ -1,13 +1,10 @@
 'use client';
-import type { IconMetadata } from '@airqo/icons-react';
 import React from 'react';
 
-import IconCard from './IconCard';
-
 interface IconGridProps {
-  icons: IconMetadata[];
+  icons: any[];
   isLoading: boolean;
-  onSelectIcon: (icon: IconMetadata) => void;
+  onSelectIcon: (icon: any) => void;
 }
 
 export default function IconGrid({
@@ -43,12 +40,18 @@ export default function IconGrid({
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-3">
       {icons.map((icon) => (
-        <IconCard
+        <div
           key={icon.name}
-          name={icon.name}
-          component={icon.component}
+          className="bg-white border border-gray-200 rounded-lg p-4 flex flex-col items-center justify-center hover:border-blue-500 hover:shadow-md transition-all cursor-pointer"
           onClick={() => onSelectIcon(icon)}
-        />
+        >
+          <div className="w-8 h-8 mb-2 flex items-center justify-center text-gray-700">
+            {icon.component || <div className="w-6 h-6 bg-gray-300 rounded" />}
+          </div>
+          <div className="text-xs text-gray-600 text-center truncate w-full">
+            {icon.name}
+          </div>
+        </div>
       ))}
     </div>
   );

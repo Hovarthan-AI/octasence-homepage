@@ -125,7 +125,7 @@ export default function IconPreviewDialog({
   ];
 
   const codeSnippets = {
-    react: `import { ${icon.name} } from '@airqo/icons-react';
+    react: `import { ${icon.name} } from 'lucide-react';
 
 <${icon.name} size={${size}} color="${color}" />`,
     vue: `<template>
@@ -133,9 +133,9 @@ export default function IconPreviewDialog({
 </template>
 
 <script setup>
-import { ${icon.name} } from '@airqo/icons-vue';
+import { ${icon.name} } from 'lucide-vue';
 </script>`,
-    flutter: `import 'package:airqo_icons_flutter/airqo_icons_flutter.dart';
+    flutter: `import 'package:lucide_flutter/lucide_flutter.dart';
 
 AqIcon.${icon.name.toLowerCase()}(
   size: ${size},

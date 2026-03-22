@@ -1,4 +1,5 @@
 'use client';
+import { CheckCircle, Download, Package } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
@@ -48,6 +49,7 @@ export default function PackagesPage() {
       (f) => f.name === activeFramework,
     );
     if (!framework) return 'npm install lucide-react'; // Fallback
+    if (!framework) return 'npm install lucide-react'; // Fallback
     return framework.installCommand;
   };
 
@@ -91,7 +93,7 @@ export default function PackagesPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             <StatCard
-              icon={<IconPackage className="w-6 h-6" />}
+              icon={<Package className="w-6 h-6" />}
               label="Total Libraries"
               value={totalPackages}
               description={
@@ -101,13 +103,13 @@ export default function PackagesPage() {
               }
             />
             <StatCard
-              icon={<IconDownload className="w-6 h-6" />}
+              icon={<Download className="w-6 h-6" />}
               label="Total Downloads"
               value={activePackage.totalDownloads}
               description="For this package"
             />
             <StatCard
-              icon={<IconCheckCircle className="w-6 h-6" />}
+              icon={<CheckCircle className="w-6 h-6" />}
               label="Framework Support"
               value={`${allFrameworks.size}+`}
               description={Array.from(allFrameworks).join(', ')}
@@ -135,7 +137,7 @@ export default function PackagesPage() {
                 <div className="space-y-3 mb-8">
                   {activePackage.features.slice(0, 4).map((feature, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <IconCheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700">{feature}</span>
                     </div>
                   ))}
@@ -190,25 +192,29 @@ export default function PackagesPage() {
                         {activeFramework === 'React' && (
                           <>
                             {`import { Home } from 'lucide-react';`}
+                            {`import { Home } from 'lucide-react';`}
                             <br />
                             <br />
+                            {`<Home size={24} color="#0284C7" />`}
                             {`<Home size={24} color="#0284C7" />`}
                           </>
                         )}
                         {activeFramework === 'Vue' && (
                           <>
                             {`import { Home } from 'lucide-vue';`}
+                            {`import { Home } from 'lucide-vue';`}
                             <br />
                             <br />
+                            {`<Home :size="24" color="#0284C7" />`}
                             {`<Home :size="24" color="#0284C7" />`}
                           </>
                         )}
                         {activeFramework === 'Flutter' && (
                           <>
-                            {`import 'package:airqo_icons_flutter/...';`}
+                            {`import 'package:lucide_flutter/lucide_flutter.dart';`}
                             <br />
                             <br />
-                            AqIcon.home01(size: 24, color: ...)
+                            LucideIcon.home(size: 24, color: ...)
                           </>
                         )}
                       </code>

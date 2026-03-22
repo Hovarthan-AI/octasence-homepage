@@ -1,4 +1,4 @@
-import { AqCopy06 } from '@airqo/icons-react';
+import { Copy } from 'lucide-react';
 import { FiChevronDown } from 'react-icons/fi';
 
 import { cn } from '@/lib/utils';
@@ -146,7 +146,7 @@ const ItemSelector = ({
                             Copied!
                           </span>
                         ) : (
-                          <AqCopy06 className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                          <Copy className="w-5 h-5 text-blue-600 flex-shrink-0" />
                         )}
                       </button>
                     </div>

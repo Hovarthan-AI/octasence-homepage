@@ -1,15 +1,14 @@
 'use client';
 
-import {
-  AqGood,
-  AqHazardous,
-  AqModerate,
-  AqNoValue,
-  AqUnhealthy,
-  AqUnhealthyForSensitiveGroups,
-  AqVeryUnhealthy,
-} from '@airqo/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import {
+  AlertTriangle,
+  Frown,
+  HelpCircle,
+  Meh,
+  Skull,
+  Smile,
+} from 'lucide-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 
@@ -47,19 +46,19 @@ const getAirQualityIcon = (category: string) => {
 
   switch (level) {
     case 'good':
-      return <AqGood {...iconProps} />;
+      return <Smile {...iconProps} />;
     case 'moderate':
-      return <AqModerate {...iconProps} />;
+      return <Meh {...iconProps} />;
     case 'unhealthy-sensitive-groups':
-      return <AqUnhealthyForSensitiveGroups {...iconProps} />;
+      return <Frown {...iconProps} />;
     case 'unhealthy':
-      return <AqUnhealthy {...iconProps} />;
+      return <Frown {...iconProps} />;
     case 'very-unhealthy':
-      return <AqVeryUnhealthy {...iconProps} />;
+      return <AlertTriangle {...iconProps} />;
     case 'hazardous':
-      return <AqHazardous {...iconProps} />;
+      return <Skull {...iconProps} />;
     default:
-      return <AqNoValue {...iconProps} />;
+      return <HelpCircle {...iconProps} />;
   }
 };
 
@@ -247,7 +246,7 @@ const GridAirQualityMonitor: React.FC = () => {
             exit={{ opacity: 0 }}
             className="bg-white rounded-xl border-2 border-dashed border-gray-300 p-12 text-center"
           >
-            <AqNoValue className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <HelpCircle className="w-16 h-16 mx-auto mb-4 text-gray-400" />
           </motion.div>
         ) : (
           <motion.div

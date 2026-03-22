@@ -1,14 +1,13 @@
 'use client';
 
 import {
-  AqGood,
-  AqHazardous,
-  AqModerate,
-  AqNoValue,
-  AqUnhealthy,
-  AqUnhealthyForSensitiveGroups,
-  AqVeryUnhealthy,
-} from '@airqo/icons-react';
+  AlertTriangle,
+  Frown,
+  HelpCircle,
+  Meh,
+  Skull,
+  Smile,
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -49,19 +48,19 @@ const getAirQualityIcon = (category: string) => {
 
   switch (level) {
     case 'good':
-      return <AqGood {...iconProps} />;
+      return <Smile {...iconProps} />;
     case 'moderate':
-      return <AqModerate {...iconProps} />;
+      return <Meh {...iconProps} />;
     case 'unhealthy-sensitive-groups':
-      return <AqUnhealthyForSensitiveGroups {...iconProps} />;
+      return <Frown {...iconProps} />;
     case 'unhealthy':
-      return <AqUnhealthy {...iconProps} />;
+      return <Frown {...iconProps} />;
     case 'very-unhealthy':
-      return <AqVeryUnhealthy {...iconProps} />;
+      return <AlertTriangle {...iconProps} />;
     case 'hazardous':
-      return <AqHazardous {...iconProps} />;
+      return <Skull {...iconProps} />;
     default:
-      return <AqNoValue {...iconProps} />;
+      return <HelpCircle {...iconProps} />;
   }
 };
 
