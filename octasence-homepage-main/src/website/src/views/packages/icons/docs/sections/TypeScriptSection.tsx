@@ -26,10 +26,10 @@ export default function TypeScriptSection() {
             className="rounded-lg"
           >
             {`import type { ComponentProps } from 'react';
-import { AqHome01 } from '@airqo/icons-react';
+import { Home } from 'lucide-react';
 
 // Type for icon props
-type IconProps = ComponentProps<typeof AqHome01>;
+type IconProps = ComponentProps<typeof Home>;
 
 // Type-safe custom component
 interface ButtonWithIconProps {
@@ -47,7 +47,7 @@ function ButtonWithIcon({ icon: Icon, children }: ButtonWithIconProps) {
 }
 
 // Usage
-<ButtonWithIcon icon={AqHome01}>Home</ButtonWithIcon>`}
+<ButtonWithIcon icon={Home}>Home</ButtonWithIcon>`}
           </SyntaxHighlighter>
         </div>
 
@@ -78,14 +78,14 @@ function ButtonWithIcon({ icon: Icon, children }: ButtonWithIconProps) {
             style={vscDarkPlus}
             className="rounded-lg"
           >
-            {`import { AqHome01, AqUser01, AqSettings01 } from '@airqo/icons-react';
+            {`import { Home, User, Settings } from 'lucide-react';
 import type { ComponentProps } from 'react';
 
 type IconName = 'home' | 'user' | 'settings';
 const iconMap: Record<IconName, React.ComponentType<ComponentProps<'svg'>>> = {
-  home: AqHome01,
-  user: AqUser01,
-  settings: AqSettings01,
+  home: Home,
+  user: User,
+  settings: Settings,
 };
 
 interface DynamicIconProps extends ComponentProps<'svg'> {

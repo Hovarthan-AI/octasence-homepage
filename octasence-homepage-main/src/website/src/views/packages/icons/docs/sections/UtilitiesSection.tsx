@@ -8,7 +8,7 @@ export default function UtilitiesSection() {
       <div>
         <h2 className="text-3xl font-bold text-gray-900 mb-4">🛠 Utilities</h2>
         <p className="text-lg text-gray-600 mb-6">
-          Helper functions and utilities for working with AirQo Icons across
+          Helper functions and utilities for working with Lucide Icons across
           different frameworks.
         </p>
       </div>
@@ -16,21 +16,26 @@ export default function UtilitiesSection() {
       <div className="space-y-8">
         <div>
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            React Hooks
+            React Integration
           </h3>
           <p className="text-gray-600 mb-4">
-            The react package exports specific hooks for easier integration.
+            Lucide React provides simple props for customization.
           </p>
           <SyntaxHighlighter
             language="typescript"
             style={vscDarkPlus}
             className="rounded-lg mb-4"
           >
-            {`import { useIconSize } from '@airqo/icons-react';
+            {`import { Home } from 'lucide-react';
 
 function MyComponent() {
-  const { size, isSmall, isLarge } = useIconSize('md');
-  // ...
+  return (
+    <Home
+      size={24}
+      color="#0284C7"
+      className="icon-class"
+    />
+  );
 }`}
           </SyntaxHighlighter>
         </div>

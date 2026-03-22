@@ -5,15 +5,27 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 
-import { CustomButton } from '@/components/ui';
 import { externalService } from '@/services/apiService';
 
 const IndiaFlag: React.FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="24" height="16" style={{ borderRadius: 2, flexShrink: 0 }}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 900 600"
+    width="24"
+    height="16"
+    style={{ borderRadius: 2, flexShrink: 0 }}
+  >
     <rect width="900" height="200" y="0" fill="#FF9933" />
     <rect width="900" height="200" y="200" fill="#FFFFFF" />
     <rect width="900" height="200" y="400" fill="#138808" />
-    <circle cx="450" cy="300" r="60" fill="none" stroke="#000080" strokeWidth="4" />
+    <circle
+      cx="450"
+      cy="300"
+      r="60"
+      fill="none"
+      stroke="#000080"
+      strokeWidth="4"
+    />
     {Array.from({ length: 24 }).map((_, i) => {
       const angle = (i * 360) / 24;
       const rad = (angle * Math.PI) / 180;
@@ -34,7 +46,13 @@ const IndiaFlag: React.FC = () => (
 );
 
 const EstoniaFlag: React.FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="24" height="16" style={{ borderRadius: 2, flexShrink: 0 }}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 900 600"
+    width="24"
+    height="16"
+    style={{ borderRadius: 2, flexShrink: 0 }}
+  >
     <rect width="900" height="200" y="0" fill="#0072CE" />
     <rect width="900" height="200" y="200" fill="#000000" />
     <rect width="900" height="200" y="400" fill="#FFFFFF" />
@@ -44,7 +62,10 @@ const EstoniaFlag: React.FC = () => (
 const VideoPanel: React.FC = () => (
   <section className="flex-1 relative flex items-center justify-center p-8 overflow-hidden min-h-[300px] lg:min-h-0">
     <video
-      autoPlay muted loop playsInline
+      autoPlay
+      muted
+      loop
+      playsInline
       className="absolute inset-0 w-full h-full object-cover"
       src="/videos/career_bg.mp4"
     />
@@ -52,7 +73,8 @@ const VideoPanel: React.FC = () => (
     <div
       className="absolute inset-0 opacity-[0.04] pointer-events-none"
       style={{
-        backgroundImage: 'radial-gradient(circle, rgba(96,165,250,0.8) 1px, transparent 1px)',
+        backgroundImage:
+          'radial-gradient(circle, rgba(96,165,250,0.8) 1px, transparent 1px)',
         backgroundSize: '32px 32px',
       }}
     />
@@ -64,7 +86,9 @@ const VideoPanel: React.FC = () => (
         Contact Us
       </div>
 
-      <h2 className="text-3xl font-bold mb-6 tracking-tight leading-tight">Get in touch</h2>
+      <h2 className="text-3xl font-bold mb-6 tracking-tight leading-tight">
+        Get in touch
+      </h2>
 
       <div className="mb-4 p-4 rounded-xl border border-white/[0.12] bg-white/[0.06]">
         <p className="text-sm font-bold mb-1.5 flex items-center gap-2 text-white">
@@ -72,8 +96,10 @@ const VideoPanel: React.FC = () => (
           India Office
         </p>
         <p className="text-white/80 text-sm font-medium leading-relaxed">
-          No 589, 14th Main Road,<br />
-          Kumaraswamy Layout,<br />
+          No 589, 14th Main Road,
+          <br />
+          Kumaraswamy Layout,
+          <br />
           Bengaluru 560078.
         </p>
       </div>
@@ -84,7 +110,8 @@ const VideoPanel: React.FC = () => (
           Estonia Office
         </p>
         <p className="text-white/80 text-sm font-medium leading-relaxed">
-          Ahtri 12, Tallinn 15551,<br />
+          Ahtri 12, Tallinn 15551,
+          <br />
           Estonia.
         </p>
       </div>
@@ -147,14 +174,21 @@ const FormPage: React.FC = () => {
 
   const formVariants = {
     hidden: { opacity: 0, scale: 0.97 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
   };
 
   if (success) {
     return (
       <div
         className="flex w-full flex-col lg:flex-row"
-        style={{ height: 'calc(100vh - 132px)', fontFamily: "'Outfit', sans-serif" }}
+        style={{
+          height: 'calc(100vh - 132px)',
+          fontFamily: "'Outfit', sans-serif",
+        }}
       >
         <VideoPanel />
         <section
@@ -172,9 +206,12 @@ const FormPage: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
               Sent
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">Message received!</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">
+              Message received!
+            </h2>
             <p className="text-white/50 mb-6 text-sm">
-              Your message has been sent successfully. We'll get back to you soon.
+              Your message has been sent successfully. We'll get back to you
+              soon.
             </p>
             <button
               onClick={() => setSuccess(false)}
@@ -191,7 +228,10 @@ const FormPage: React.FC = () => {
   return (
     <div
       className="flex w-full flex-col lg:flex-row"
-      style={{ height: 'calc(100vh - 132px)', fontFamily: "'Outfit', sans-serif" }}
+      style={{
+        height: 'calc(100vh - 132px)',
+        fontFamily: "'Outfit', sans-serif",
+      }}
     >
       <VideoPanel />
 
@@ -234,13 +274,19 @@ const FormPage: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
               Send a message
             </div>
-            <h3 className="text-2xl font-bold text-white tracking-tight">We'd love to hear from you</h3>
+            <h3 className="text-2xl font-bold text-white tracking-tight">
+              We'd love to hear from you
+            </h3>
             <div className="w-16 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-3" />
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             {/* Full Name */}
-            <FormField id="fullName" label="Full name" placeholder="Enter your full name">
+            <FormField
+              id="fullName"
+              label="Full name"
+              placeholder="Enter your full name"
+            >
               <input
                 type="text"
                 id="fullName"
@@ -303,13 +349,22 @@ const FormPage: React.FC = () => {
                 className="mt-1 accent-blue-500"
                 required
               />
-              <label htmlFor="terms" className="text-white/40 text-xs leading-relaxed">
+              <label
+                htmlFor="terms"
+                className="text-white/40 text-xs leading-relaxed"
+              >
                 I agree to the{' '}
-                <a href="/legal/terms-of-service" className="text-blue-400 underline hover:text-blue-300 transition-colors">
+                <a
+                  href="/legal/terms-of-service"
+                  className="text-blue-400 underline hover:text-blue-300 transition-colors"
+                >
                   Terms of Service
                 </a>{' '}
                 and{' '}
-                <a href="/legal/privacy-policy" className="text-blue-400 underline hover:text-blue-300 transition-colors">
+                <a
+                  href="/legal/privacy-policy"
+                  className="text-blue-400 underline hover:text-blue-300 transition-colors"
+                >
                   Privacy Policy
                 </a>
               </label>
@@ -350,7 +405,10 @@ const FormField: React.FC<{
   children: React.ReactNode;
 }> = ({ id, label, children }) => (
   <div className="flex flex-col gap-1.5">
-    <label htmlFor={id} className="text-white/50 text-xs font-medium tracking-wide uppercase">
+    <label
+      htmlFor={id}
+      className="text-white/50 text-xs font-medium tracking-wide uppercase"
+    >
       {label}
     </label>
     {children}

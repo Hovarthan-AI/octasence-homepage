@@ -246,8 +246,8 @@ function UseCasesPageInner() {
     filter === 'All'
       ? caseStudies
       : caseStudies.filter(
-        (cs) => cs.tag === filter || cs.sector.includes(filter),
-      );
+          (cs) => cs.tag === filter || cs.sector.includes(filter),
+        );
 
   return (
     <main

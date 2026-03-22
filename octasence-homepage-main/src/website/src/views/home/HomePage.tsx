@@ -55,7 +55,6 @@ const HomePage = () => {
 
         <PlatformShowcase />
 
-      
         {/* AI Monitoring Platform */}
         <MotionSection>
           <AnalyticsContentSection

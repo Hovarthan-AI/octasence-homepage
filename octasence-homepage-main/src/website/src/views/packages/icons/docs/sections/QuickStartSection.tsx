@@ -6,24 +6,24 @@ export default function QuickStartSection() {
   const [activeTab, setActiveTab] = useState<'react' | 'vue'>('react');
 
   const codeSnippets = {
-    react: `import { AqHome01 } from '@airqo/icons-react';
+    react: `import { Home } from 'lucide-react';
 
 export default function App() {
   return (
-    <AqHome01 
-      size={24} 
-      color="#0284C7" 
+    <Home
+      size={24}
+      color="#0284C7"
     />
   );
 }`,
     vue: `<script setup>
-import { AqHome01 } from '@airqo/icons-vue';
+import { Home } from 'lucide-vue';
 </script>
 
 <template>
-  <AqHome01 
-    :size="24" 
-    color="#0284C7" 
+  <Home
+    :size="24"
+    color="#0284C7"
   />
 </template>`,
   };
@@ -37,11 +37,12 @@ import { AqHome01 } from '@airqo/icons-vue';
     <section id="quick-start" className="scroll-mt-24">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Start</h2>
       <p className="text-gray-600 mb-6">
-        Import icons directly from the package. The icons are named with an
+        Import icons directly from the package. Icons are named in PascalCase
+        (e.g.,{' '}
         <code className="mx-1 bg-gray-100 px-1.5 py-0.5 rounded text-gray-800 text-sm font-mono">
-          Aq
+          Home
         </code>
-        prefix followed by the icon name in PascalCase.
+        ).
       </p>
 
       <div className="bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-800">

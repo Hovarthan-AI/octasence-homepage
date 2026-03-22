@@ -534,10 +534,11 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
 
       {/* Hub */}
       <div
-        className={`absolute z-20 rounded-full flex flex-col items-center justify-center text-center p-3 transition-colors duration-300 ${highlightIdx !== null
+        className={`absolute z-20 rounded-full flex flex-col items-center justify-center text-center p-3 transition-colors duration-300 ${
+          highlightIdx !== null
             ? 'border-blue-500/50 bg-[#1a2130]'
             : 'border-white/13 bg-[#1a2130]'
-          } border`}
+        } border`}
         style={{
           width: 135,
           height: 135,
@@ -571,18 +572,20 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
               ref={(el) => {
                 spokesRef.current[i] = el;
               }}
-              className={`absolute top-1/2 left-1/2 h-px origin-left transition-colors duration-300 pointer-events-none z-[1] ${isHighlighted ? 'bg-blue-500/40' : 'bg-white/[0.07]'
-                }`}
+              className={`absolute top-1/2 left-1/2 h-px origin-left transition-colors duration-300 pointer-events-none z-[1] ${
+                isHighlighted ? 'bg-blue-500/40' : 'bg-white/[0.07]'
+              }`}
             />
             {/* Node */}
             <div
               ref={(el) => {
                 nodesRef.current[i] = el;
               }}
-              className={`absolute z-10 rounded-full flex flex-col items-center justify-center text-center p-2 cursor-pointer transition-all duration-250 ${isHighlighted
+              className={`absolute z-10 rounded-full flex flex-col items-center justify-center text-center p-2 cursor-pointer transition-all duration-250 ${
+                isHighlighted
                   ? 'border-blue-500/55 bg-[#1a2130] scale-110'
                   : 'border-white/[0.07] bg-[#131922] shadow-[0_0_20px_rgba(79,127,255,0.08)] hover:border-blue-500/55 hover:bg-[#1a2130]'
-                } border`}
+              } border`}
               style={{ width: 78, height: 78 }}
               onMouseEnter={() => onHover(i)}
               onMouseLeave={() => onHover(null)}
@@ -597,8 +600,9 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
                 {s.icon}
               </span>
               <span
-                className={`text-[9px] font-medium mt-1.5 leading-tight transition-colors ${isHighlighted ? 'text-white' : 'text-white/50'
-                  }`}
+                className={`text-[9px] font-medium mt-1.5 leading-tight transition-colors ${
+                  isHighlighted ? 'text-white' : 'text-white/50'
+                }`}
               >
                 {s.label}
               </span>
@@ -953,7 +957,6 @@ export default function SectorsPage() {
           {/* 🔥 Background FX Layer */}
           {/* 🔥 Background FX Layer */}
           <div className="absolute inset-0 pointer-events-none z-0">
-
             {/* Grid overlay */}
             <div
               className="absolute inset-0 opacity-[0.05]"
@@ -972,7 +975,6 @@ export default function SectorsPage() {
 
             {/* Right glow */}
             <div className="absolute right-[10%] top-[60%] w-[300px] h-[300px] bg-cyan-500/10 blur-[100px]" />
-
           </div>
 
           <div className="relative z-10 max-w-[1100px] mx-auto px-12">

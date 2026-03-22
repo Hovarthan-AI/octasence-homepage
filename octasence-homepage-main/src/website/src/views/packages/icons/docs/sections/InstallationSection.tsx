@@ -6,9 +6,9 @@ export default function InstallationSection() {
   const [activeTab, setActiveTab] = useState<'npm' | 'yarn' | 'pnpm'>('npm');
 
   const commands = {
-    npm: 'npm install @airqo/icons-react',
-    yarn: 'yarn add @airqo/icons-react',
-    pnpm: 'pnpm add @airqo/icons-react',
+    npm: 'npm install lucide-react',
+    yarn: 'yarn add lucide-react',
+    pnpm: 'pnpm add lucide-react',
   };
 
   const copyCommand = async () => {
@@ -82,7 +82,7 @@ export default function InstallationSection() {
         <p className="text-sm text-blue-800">
           For Vue usage, install{' '}
           <code className="bg-blue-100 px-1 py-0.5 rounded text-blue-900 font-semibold">
-            @airqo/icons-vue
+            lucide-vue
           </code>{' '}
           instead.
         </p>

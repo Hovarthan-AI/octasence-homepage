@@ -1,12 +1,12 @@
 /* eslint-disable simple-import-sort/imports */
 import {
-  AqData,
-  AqFile02,
-  AqGlobe05,
-  AqMonitor,
-  AqStar06,
-  AqCoinsHand,
-} from '@airqo/icons-react';
+  Database,
+  FileText,
+  Globe,
+  Monitor,
+  Star,
+  HandCoins,
+} from 'lucide-react';
 /* eslint-enable simple-import-sort/imports */
 
 export const accordionItems = {
@@ -51,42 +51,42 @@ export const statItems = [
     label: 'Industrial Sites Monitored',
     key: 'industrial_sites',
     value: 12,
-    icon: AqGlobe05,
+    icon: Globe,
     color: '#145DFF',
   },
   {
     label: 'Pilot Deployments',
     key: 'pilot_deployments',
     value: 5,
-    icon: AqStar06,
+    icon: Star,
     color: '#10B981',
   },
   {
     label: 'IoT Sensors Connected',
     key: 'iot_sensors',
     value: 340,
-    icon: AqMonitor,
+    icon: Monitor,
     color: '#F59E0B',
   },
   {
     label: 'AI Risk Analyses',
     key: 'ai_analyses',
     value: 18000,
-    icon: AqData,
+    icon: Database,
     color: '#EF4444',
   },
   {
     label: 'Engineering Reports',
     key: 'engineering_reports',
     value: 200,
-    icon: AqFile02,
+    icon: FileText,
     color: '#8B5CF6',
   },
   {
     label: 'Partners',
     key: 'partners',
     value: 8,
-    icon: AqCoinsHand,
+    icon: HandCoins,
     color: '#06B6D4',
   },
 ];

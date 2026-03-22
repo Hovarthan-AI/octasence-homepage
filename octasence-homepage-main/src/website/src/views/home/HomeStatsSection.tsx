@@ -110,17 +110,15 @@ const HeadingSection: React.FC<{
           <motion.div
             layout
             transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-            className={`absolute bottom-0 h-[3px] bg-[#0F47D7] ${
-              activeTab === 'infrastructure' ? 'left-0 w-1/2' : 'left-1/2 w-1/2'
-            }`}
+            className={`absolute bottom-0 h-[3px] bg-[#0F47D7] ${activeTab === 'infrastructure' ? 'left-0 w-1/2' : 'left-1/2 w-1/2'
+              }`}
           />
           <button
             onClick={() => setActiveTab('infrastructure')}
-            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${
-              activeTab === 'infrastructure'
+            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${activeTab === 'infrastructure'
                 ? 'text-[#08162C]'
                 : 'text-[#587193]'
-            }`}
+              }`}
             style={{ fontFamily: 'Outfit, sans-serif' }}
             type="button"
           >
@@ -128,9 +126,8 @@ const HeadingSection: React.FC<{
           </button>
           <button
             onClick={() => setActiveTab('analytics')}
-            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${
-              activeTab === 'analytics' ? 'text-[#08162C]' : 'text-[#587193]'
-            }`}
+            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${activeTab === 'analytics' ? 'text-[#08162C]' : 'text-[#587193]'
+              }`}
             style={{ fontFamily: 'Outfit, sans-serif' }}
             type="button"
           >
@@ -221,7 +218,6 @@ const StatisticsSection: React.FC = () => {
 
   return (
     <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden px-4 md:px-6">
-
       <motion.div
         className="flex w-max gap-4"
         animate={{ x: ['0%', '-50%'] }}
@@ -241,7 +237,6 @@ const StatisticsSection: React.FC = () => {
               className="group flex min-h-[200px] w-[220px] flex-shrink-0 flex-col justify-between rounded-xl border border-white/10 bg-[#031629] p-5 shadow-[0_18px_40px_rgba(2,6,23,0.5)] transition-all duration-300 hover:border-blue-400/30 hover:shadow-[0_0_25px_rgba(59,130,246,0.15)] sm:w-[240px] lg:w-[260px]"
             >
               <div className="space-y-3">
-                
                 {/* Colored Accent */}
                 <div
                   className="h-1.5 w-14 rounded-full"

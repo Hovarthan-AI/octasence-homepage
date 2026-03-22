@@ -1,84 +1,18 @@
 'use client';
-import type { IconMetadata } from '@airqo/icons-react';
-import {
-  AirQOIconsUtils,
-  AqBox,
-  AqDownload01,
-  AqGlobe02,
-  AqSettings01,
-  useIconSearch,
-} from '@airqo/icons-react';
-import React, { useEffect, useMemo, useState } from 'react';
+import { Settings as IconSettings } from 'lucide-react';
+import React from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import BackButton from '@/components/common/BackButton';
-import GroupFilter from '@/components/packages/GroupFilter';
-import IconGrid from '@/components/packages/IconGrid';
-import IconPreviewDialog from '@/components/packages/IconPreviewDialog';
-import SearchBar from '@/components/packages/SearchBar';
 import StatCard from '@/components/packages/StatCard';
+import { IconDownload, IconGlobe, IconPackage } from '@/lib/icons';
 
 export default function IconsPackagePage() {
-  const [query, setQuery] = useState('');
-  const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
-  const [selectedIcon, setSelectedIcon] = useState<IconMetadata | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [allIcons, setAllIcons] = useState<IconMetadata[]>([]);
-  const [isLoadingAll, setIsLoadingAll] = useState(true);
-  const [groups, setGroups] = useState<
-    Array<{ name: string; displayName?: string; count: number }>
-  >([]);
-
-  // Load all icons on mount
-  useEffect(() => {
-    try {
-      const icons = AirQOIconsUtils.getAllIcons();
-      setAllIcons(icons);
-
-      // Get groups with counts
-      const allGroups = AirQOIconsUtils.getAllGroups();
-      const groupsWithCounts = allGroups.map((group) => ({
-        name: group.name,
-        displayName: group.displayName,
-        count: icons.filter((icon) => icon.group === group.name).length,
-      }));
-      setGroups(groupsWithCounts);
-    } catch (error) {
-      console.error('Error loading icons:', error);
-    } finally {
-      setIsLoadingAll(false);
-    }
-  }, []);
-
-  // Use search hook
-  const { results: searchResults, isLoading: isSearching } = useIconSearch(
-    query,
-    { maxResults: 2000 },
-  );
-
-  // Filter results
-  const filteredResults = useMemo(() => {
-    const iconsToFilter = query ? searchResults : allIcons;
-
-    if (selectedGroup) {
-      return iconsToFilter.filter((icon) => icon.group === selectedGroup);
-    }
-
-    return iconsToFilter;
-  }, [searchResults, selectedGroup, query, allIcons]);
-
-  const handleSelectIcon = (icon: IconMetadata) => {
-    setSelectedIcon(icon);
-    setIsDialogOpen(true);
-  };
-
   return (
     <>
       <Toaster position="bottom-right" containerStyle={{ zIndex: 40000 }} />
 
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-        {/* Top sticky header removed - banner contains back button */}
-
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-[#1651C6] to-[#0D388E] text-white py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,12 +25,22 @@ export default function IconsPackagePage() {
             </div>
             <div className="text-center space-y-4">
               <h1 className="text-4xl md:text-5xl font-bold">
-                AirQo Icon Library
+                Lucide Icon Library
               </h1>
               <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-                1,383+ beautiful icons for React, Vue, and Flutter. Fully
+                3,000+ beautiful icons for React, Vue, and Flutter. Fully
                 customizable with TypeScript support.
               </p>
+              <div className="pt-4">
+                <a
+                  href="https://lucide.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium"
+                >
+                  Visit Lucide Website
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -105,60 +49,101 @@ export default function IconsPackagePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <StatCard
-              icon={<AqBox className="w-6 h-6" />}
+              icon={<IconPackage className="w-6 h-6" />}
               label="Total Icons"
-              value="1,383+"
+              value="3,000+"
             />
             <StatCard
-              icon={<AqSettings01 className="w-6 h-6" />}
+              icon={<IconSettings className="w-6 h-6" />}
               label="Categories"
-              value="22"
+              value="30+"
             />
             <StatCard
-              icon={<AqGlobe02 className="w-6 h-6" />}
+              icon={<IconGlobe className="w-6 h-6" />}
               label="Frameworks"
               value="3"
               description="React, Vue, Flutter"
             />
             <StatCard
-              icon={<AqDownload01 className="w-6 h-6" />}
+              icon={<IconDownload className="w-6 h-6" />}
               label="Weekly Downloads"
-              value="36+"
+              value="2M+"
             />
           </div>
         </div>
 
-        {/* Search and Filter */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
-            <SearchBar
-              value={query}
-              onChange={setQuery}
-              resultCount={filteredResults.length}
-            />
-            <GroupFilter
-              groups={groups}
-              selectedGroup={selectedGroup}
-              onSelectGroup={setSelectedGroup}
-            />
+        {/* Info Section */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              About Lucide Icons
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Lucide is a beautiful & consistent icon toolkit made by the
+              community. It's the successor to Feather Icons, featuring a clean
+              and modern design.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Features
+                </h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>3,000+ meticulously crafted icons</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>Fully open source (MIT licensed)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>TypeScript support included</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-600">✓</span>
+                    <span>Customizable size, color, and stroke width</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Installation
+                </h3>
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <code className="text-sm text-gray-800">
+                    npm install lucide-react
+                  </code>
+                </div>
+                <p className="text-sm text-gray-500">
+                  Also available for Vue, Svelte, Solid, and more.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Icon Grid */}
+        {/* Documentation Link */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <IconGrid
-            icons={filteredResults}
-            isLoading={isSearching || isLoadingAll}
-            onSelectIcon={handleSelectIcon}
-          />
+          <div className="text-center">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              Need more details?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Visit the official Lucide documentation for complete usage guides,
+              API references, and interactive examples.
+            </p>
+            <a
+              href="https://lucide.dev/docs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-medium"
+            >
+              View Documentation
+            </a>
+          </div>
         </div>
-
-        {/* Icon Preview Dialog */}
-        <IconPreviewDialog
-          icon={selectedIcon}
-          isOpen={isDialogOpen}
-          onClose={() => setIsDialogOpen(false)}
-        />
       </div>
     </>
   );
