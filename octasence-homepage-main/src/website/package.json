@@ -34,6 +34,7 @@
     "glob": "^9.3.5",
     "jspdf": "^3.0.4",
     "loglevel": "^1.9.2",
+    "lucide-react": "^0.577.0",
     "next": "^14.2.35",
     "qrcode.react": "^4.2.0",
     "quill-delta-to-html": "^0.12.1",
