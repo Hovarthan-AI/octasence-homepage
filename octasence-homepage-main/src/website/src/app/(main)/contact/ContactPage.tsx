@@ -137,93 +137,56 @@ const ContactPage: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* ── RIGHT: Options Panel ── */}
+      {/* Inquiry Options Section */}
       <motion.section
-        className="flex-1 w-full flex flex-col justify-center p-8 overflow-y-auto relative"
-        style={{ background: '#0a0a14' }}
+        className="flex-1 w-full flex flex-col justify-center p-8 space-y-4 bg-white"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(96,165,250,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,0.5) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-
-        <div className="relative z-10 max-w-lg w-full mx-auto">
-          <motion.div variants={itemVariants} className="mb-8">
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-blue-400 text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              How can we help?
+        {[
+          {
+            icon: <FiTablet size={24} className="text-blue-500" />,
+            question: 'I have a question about',
+            detail: 'SHM Sensors',
+          },
+          {
+            icon: <FiDatabase size={24} className="text-blue-500" />,
+            question: 'I have a question about',
+            detail: 'SHM Data & Analytics',
+          },
+          {
+            icon: <FiStar size={24} className="text-blue-500" />,
+            question: 'I have some',
+            detail: 'feedback',
+          },
+          {
+            icon: <FiMessageCircle size={24} className="text-blue-500" />,
+            question: 'I have a',
+            detail: 'general inquiry',
+          },
+        ].map((item, index) => (
+          <div
+            role="button"
+            tabIndex={0}
+            key={index}
+            onClick={() => handleButtonClick(item.detail)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleButtonClick(item.detail);
+            }}
+            className="flex w-full cursor-pointer items-center border border-gray-300 bg-white p-6 text-left shadow-sm hover:bg-blue-50"
+          >
+            <div className="flex-shrink-0 p-4 bg-blue-100 rounded-full mr-4">
+              {item.icon}
             </div>
-            <h3 className="text-2xl font-bold text-white tracking-tight">
-              What brings you here?
-            </h3>
-            <div className="w-16 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-3" />
-          </motion.div>
-
-          <div className="space-y-3">
-            {cards.map((item, index) => (
-              <CardButton key={index} item={item} onClick={() => handleButtonClick(item.detail)} variants={itemVariants} />
-            ))}
+            <div>
+              <p className="text-gray-600">{item.question}</p>
+              <p className="text-[#08162C]">{item.detail}</p>
+            </div>
           </div>
-        </div>
+        ))}
       </motion.section>
     </div>
-  );
-};
-
-// Extracted to avoid inline ref handlers
-const CardButton: React.FC<{
-  item: { icon: React.ReactNode; question: string; detail: string; accent: string };
-  onClick: () => void;
-  variants: Variants;
-}> = ({ item, onClick, variants }) => {
-  const [hovered, setHovered] = React.useState(false);
-
-  return (
-    <motion.div
-      variants={variants}
-      role="button"
-      tabIndex={0}
-      onClick={onClick}
-      onKeyDown={(e) => { if (e.key === 'Enter') onClick(); }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="group flex w-full cursor-pointer items-center p-5 rounded-xl border text-left transition-all duration-300"
-      style={{
-        borderColor: hovered ? item.accent + '55' : 'rgba(255,255,255,0.07)',
-        background: hovered ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.02)',
-        boxShadow: hovered ? `0 0 28px ${item.accent}18` : 'none',
-      }}
-    >
-      <div
-        className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center mr-4 transition-all duration-300"
-        style={{
-          background: hovered ? item.accent + '22' : 'rgba(255,255,255,0.05)',
-          color: hovered ? item.accent : 'rgba(255,255,255,0.3)',
-          boxShadow: hovered ? `0 0 14px ${item.accent}44` : 'none',
-        }}
-      >
-        {item.icon}
-      </div>
-
-      <div className="flex-1">
-        <p className="text-white/40 text-xs mb-0.5">{item.question}</p>
-        <p className="text-white font-semibold text-sm tracking-tight">{item.detail}</p>
-      </div>
-
-      <span
-        className="text-base ml-3 transition-all duration-300"
-        style={{ color: hovered ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.15)' }}
-      >
-        →
-      </span>
-    </motion.div>
   );
 };
 

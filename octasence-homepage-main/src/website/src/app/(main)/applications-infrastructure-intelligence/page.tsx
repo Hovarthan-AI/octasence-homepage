@@ -534,11 +534,10 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
 
       {/* Hub */}
       <div
-        className={`absolute z-20 rounded-full flex flex-col items-center justify-center text-center p-3 transition-colors duration-300 ${
-          highlightIdx !== null
+        className={`absolute z-20 rounded-full flex flex-col items-center justify-center text-center p-3 transition-colors duration-300 ${highlightIdx !== null
             ? 'border-blue-500/50 bg-[#1a2130]'
             : 'border-white/13 bg-[#1a2130]'
-        } border`}
+          } border`}
         style={{
           width: 135,
           height: 135,
@@ -551,10 +550,14 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
           {highlightIdx !== null ? sectors[highlightIdx].icon : Icons.platform}
         </div>
         <p className="text-[13px] font-medium text-white leading-tight">
-          {highlightIdx !== null ? sectors[highlightIdx].label : 'SHM Platform'}
+          {highlightIdx !== null
+            ? sectors[highlightIdx].label
+            : 'Octasence SHM'}
         </p>
         <p className="text-[11px] text-white/50 mt-1">
-          {highlightIdx !== null ? sectors[highlightIdx].tag : '5 sectors'}
+          {highlightIdx !== null
+            ? sectors[highlightIdx].tag
+            : `${sectors.length} sectors · Select to preview`}
         </p>
       </div>
 
@@ -568,20 +571,18 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
               ref={(el) => {
                 spokesRef.current[i] = el;
               }}
-              className={`absolute top-1/2 left-1/2 h-px origin-left transition-colors duration-300 pointer-events-none z-[1] ${
-                isHighlighted ? 'bg-blue-500/40' : 'bg-white/[0.07]'
-              }`}
+              className={`absolute top-1/2 left-1/2 h-px origin-left transition-colors duration-300 pointer-events-none z-[1] ${isHighlighted ? 'bg-blue-500/40' : 'bg-white/[0.07]'
+                }`}
             />
             {/* Node */}
             <div
               ref={(el) => {
                 nodesRef.current[i] = el;
               }}
-              className={`absolute z-10 rounded-full flex flex-col items-center justify-center text-center p-2 cursor-pointer transition-all duration-250 ${
-                isHighlighted
+              className={`absolute z-10 rounded-full flex flex-col items-center justify-center text-center p-2 cursor-pointer transition-all duration-250 ${isHighlighted
                   ? 'border-blue-500/55 bg-[#1a2130] scale-110'
                   : 'border-white/[0.07] bg-[#131922] shadow-[0_0_20px_rgba(79,127,255,0.08)] hover:border-blue-500/55 hover:bg-[#1a2130]'
-              } border`}
+                } border`}
               style={{ width: 78, height: 78 }}
               onMouseEnter={() => onHover(i)}
               onMouseLeave={() => onHover(null)}
@@ -596,9 +597,8 @@ const OrbitWheel: React.FC<OrbitWheelProps> = ({
                 {s.icon}
               </span>
               <span
-                className={`text-[9px] font-medium mt-1.5 leading-tight transition-colors ${
-                  isHighlighted ? 'text-white' : 'text-white/50'
-                }`}
+                className={`text-[9px] font-medium mt-1.5 leading-tight transition-colors ${isHighlighted ? 'text-white' : 'text-white/50'
+                  }`}
               >
                 {s.label}
               </span>
@@ -805,13 +805,16 @@ export default function SectorsPage() {
 
   return (
     <div
-      className="min-h-screen bg-[#0c1018] overflow-x-hidden selection:bg-blue-500 selection:text-white"
+      className="min-h-screen overflow-x-hidden selection:bg-blue-500 selection:text-white"
       style={{
+        backgroundColor: '#0a0f1c',
         backgroundImage: `
-          linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)
+          radial-gradient(ellipse 100% 80% at 50% -30%, rgba(59, 130, 246, 0.14), transparent 55%),
+          radial-gradient(ellipse 70% 50% at 100% 20%, rgba(99, 102, 241, 0.12), transparent 45%),
+          linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)
         `,
-        backgroundSize: '44px 44px',
+        backgroundSize: 'auto, auto, 44px 44px, 44px 44px',
       }}
     >
       <Navbar />
@@ -887,7 +890,7 @@ export default function SectorsPage() {
                   href="#case-studies"
                   className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/13 text-white/60 rounded-full text-sm hover:text-white hover:border-white/20 transition-colors"
                 >
-                  View case studies
+                  Browse case studies
                 </Link>
               </div>
 
@@ -899,10 +902,13 @@ export default function SectorsPage() {
                 className="flex items-center justify-center gap-10 mt-16 flex-wrap"
               >
                 {[
-                  { num: '5', label: 'Sectors covered' },
-                  { num: '10', label: 'Case studies' },
+                  {
+                    num: String(sectors.length),
+                    label: 'Infrastructure sectors',
+                  },
+                  { num: '10+', label: 'Reference deployments' },
                   { num: '24/7', label: 'Live monitoring' },
-                  { num: '<1s', label: 'Alert latency' },
+                  { num: '<1s', label: 'Typical alert latency' },
                 ].map((s, i) => (
                   <React.Fragment key={i}>
                     {i > 0 && (
@@ -935,39 +941,39 @@ export default function SectorsPage() {
           className="relative z-10 py-24"
           ref={orbitWrapRef}
           style={{
-  background: `
+            background: `
     radial-gradient(circle at 50% 50%, rgba(79,127,255,0.08), transparent 60%),
     radial-gradient(circle at 20% 30%, rgba(99,102,241,0.08), transparent 50%),
     #0d1520
   `,
-}}
+          }}
         >
           {/* Strobe canvas spans the full section */}
           <StrobeCanvas containerRef={orbitWrapRef} />
           {/* 🔥 Background FX Layer */}
-{/* 🔥 Background FX Layer */}
-<div className="absolute inset-0 pointer-events-none z-0">
+          {/* 🔥 Background FX Layer */}
+          <div className="absolute inset-0 pointer-events-none z-0">
 
-  {/* Grid overlay */}
-  <div
-    className="absolute inset-0 opacity-[0.05]"
-    style={{
-      backgroundImage:
-        'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
-      backgroundSize: '60px 60px',
-    }}
-  />
+            {/* Grid overlay */}
+            <div
+              className="absolute inset-0 opacity-[0.05]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }}
+            />
 
-  {/* Center glow */}
-  <div className="absolute left-1/2 top-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-blue-500/10 blur-[120px]" />
+            {/* Center glow */}
+            <div className="absolute left-1/2 top-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-blue-500/10 blur-[120px]" />
 
-  {/* Left glow */}
-  <div className="absolute left-[10%] top-[30%] w-[300px] h-[300px] bg-indigo-500/10 blur-[100px]" />
+            {/* Left glow */}
+            <div className="absolute left-[10%] top-[30%] w-[300px] h-[300px] bg-indigo-500/10 blur-[100px]" />
 
-  {/* Right glow */}
-  <div className="absolute right-[10%] top-[60%] w-[300px] h-[300px] bg-cyan-500/10 blur-[100px]" />
+            {/* Right glow */}
+            <div className="absolute right-[10%] top-[60%] w-[300px] h-[300px] bg-cyan-500/10 blur-[100px]" />
 
-</div>
+          </div>
 
           <div className="relative z-10 max-w-[1100px] mx-auto px-12">
             <motion.div
@@ -995,7 +1001,10 @@ export default function SectorsPage() {
               </div>
 
               {/* Orbit wheel + Preview panel side by side */}
-              <div className="flex items-center gap-12 min-h-[580px]">
+              <div
+                id="case-studies"
+                className="flex items-center gap-12 min-h-[580px] scroll-mt-28"
+              >
                 <div className="flex-shrink-0">
                   <OrbitWheel
                     activeIdx={activeIdx}

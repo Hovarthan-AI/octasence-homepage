@@ -533,9 +533,9 @@ const CareerPage: React.FC = () => {
             <h2 className="text-2xl md:text-3xl font-black text-white">
               Open roles
             </h2>
-            <p className="text-sm text-slate-400">
-              Filter by team and apply to roles that are still accepting
-              applications.
+            <p className="text-sm text-slate-400 max-w-xl mx-auto">
+              Roles update as teams grow—filter by discipline and open a role to
+              read the full brief. We review every application thoughtfully.
             </p>
           </div>
 

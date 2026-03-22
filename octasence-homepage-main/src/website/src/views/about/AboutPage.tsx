@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -6,34 +7,38 @@ import mainConfig from '@/configs/mainConfigs';
 type Founder = {
   name: string;
   role: string;
-  bio: string;
-  initials: string;
+  tagline: string;
+  imageSrc: string;
 };
 
 const FOUNDERS: Founder[] = [
   {
     name: 'Shivaraj Choutagi',
     role: 'Founder & CEO',
-    initials: 'SC',
-    bio: 'Founder & CEO of OctaSence, an AI-powered geotechnical and structural health monitoring intelligence platform. Mining engineering background with deep field expertise in ground behavior and operational risk; experience in digital mining, AI-led industrial solutions, and product leadership. Co-founder of PiCake. At OctaSence, integrates mining expertise, AI, IoT, and hardware to build scalable infrastructure intelligence.',
+    tagline:
+      'Mining and AI leader turning field reality into predictive infrastructure intelligence.',
+    imageSrc: '/assets/images/Shivraj.jpeg',
   },
   {
     name: 'Harsh Vardhan',
     role: 'Co-Founder & CTO',
-    initials: 'HV',
-    bio: 'Chief Technology Officer and two-time founder with 20+ years leading PropTech, agentic AI for infrastructure, ERP/CRM, and digital marketing automation. Foundational role in India’s first PropTech wave (Housing.com); now drives OctaSence’s agentic platform for structural health monitoring and geotechnical intelligence. Mentor and advisor to AI-driven ventures on GTM, MVP refinement, and commercialization.',
+    tagline:
+      'Twenty years shipping agentic platforms—from PropTech to SHM—for mission-critical systems.',
+    imageSrc: '/assets/images/WhatsApp Image 2026-03-13 at 17.00.48.jpeg',
   },
   {
     name: 'Wolfgang Staufer',
     role: 'Co-Founder · Business Development',
-    initials: 'WS',
-    bio: 'Entrepreneurial leader with 30+ years across high-end engineering, global management, and strategic growth. Degrees in Electrical Engineering (TU Vienna) and Business Administration (JKU Linz). Former Group CEO/CFO in industrial machinery; led global organizations to major revenue and profit growth. At Octasence, leads business development and turns ambitious visions into market-ready outcomes.',
+    tagline:
+      'Scales deep-tech ventures globally—engineering rigor with board-level commercial execution.',
+    imageSrc: '/assets/images/wolfgang.jpeg',
   },
   {
     name: 'Vasiliy Bezlyudnyy',
     role: 'Co-Founder · Product',
-    initials: 'VB',
-    bio: 'Mechanical engineering graduate (TalTech) with certifications in management consulting and AI for business. Product owner and analyst background: launched brands, drove revenue and customer growth with data-backed decisions, analytics (SQL, Power BI), and customer research. At Octasence, leads product strategy from requirements and user stories to KPIs and continuous improvement.',
+    tagline:
+      'Product and analytics lead: from customer truth to KPIs, dashboards, and shipped features.',
+    imageSrc: '/assets/images/vesely.png',
   },
 ];
 
@@ -41,32 +46,35 @@ type TeamMember = {
   name: string;
   role: string;
   linkedin: string;
-  bio: string;
+  tagline: string;
   initials: string;
 };
 
 const TEAM: TeamMember[] = [
   {
     name: 'Sandeep Vissapragada',
-    role: 'Leadership',
+    role: 'Strategy & partnerships',
     linkedin:
       'https://www.linkedin.com/in/sandeep-vissapragada-10b09b24a?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
-    bio: 'Key contributor to Octasence strategy and execution.',
+    tagline:
+      'Aligns enterprise programs with Octasence roadmaps so deployments land on time.',
     initials: 'SV',
   },
   {
     name: 'Hovarthan S.',
-    role: 'Engineering',
+    role: 'Software engineering',
     linkedin:
       'https://www.linkedin.com/in/hovarthan-s-06114b281?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-    bio: 'Building reliable software for infrastructure intelligence.',
+    tagline:
+      'Builds resilient ingestion and APIs that keep field data trustworthy at scale.',
     initials: 'HS',
   },
   {
     name: 'Akshay Mali',
-    role: 'Product & Engineering',
+    role: 'Product engineering',
     linkedin: 'https://www.linkedin.com/in/akshay-mali-333129246/',
-    bio: 'Shipping features that connect field data to decisions.',
+    tagline:
+      'Connects UX and telemetry so operators see risk—not noise—on every screen.',
     initials: 'AM',
   },
   {
@@ -74,20 +82,22 @@ const TEAM: TeamMember[] = [
     role: 'Operations',
     linkedin:
       'https://www.linkedin.com/in/prashant-paliwal-39914726a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-    bio: 'Keeping delivery and partnerships aligned with customer needs.',
+    tagline:
+      'Keeps delivery, vendors, and customer success moving as one rhythm.',
     initials: 'PP',
   },
   {
     name: 'Devanshi Jaiswal',
-    role: 'Design & Experience',
+    role: 'Design & experience',
     linkedin:
       'https://www.linkedin.com/in/devanshi-jaiswal-b83774217/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-    bio: 'Crafting clear, accessible experiences across the platform.',
+    tagline:
+      'Shapes interfaces and narratives so complex SHM feels obvious to real users.',
     initials: 'DJ',
   },
 ];
 
-function Avatar({
+function TeamAvatar({
   initials,
   className = '',
 }: {
@@ -96,7 +106,7 @@ function Avatar({
 }) {
   return (
     <div
-      className={`flex aspect-square w-full max-w-[200px] items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-600/40 to-sky-500/25 text-2xl font-black text-white/90 ${className}`}
+      className={`flex aspect-square w-full max-w-[160px] items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-600/35 to-sky-500/20 text-xl font-black text-white/90 ${className}`}
     >
       {initials}
     </div>
@@ -105,7 +115,7 @@ function Avatar({
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#060814] text-slate-100">
+    <div className="min-h-screen text-slate-100 bg-[#070b1a] bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(59,130,246,0.18),transparent_50%),radial-gradient(ellipse_70%_50%_at_100%_15%,rgba(99,102,241,0.14),transparent_45%),linear-gradient(180deg,#070b1a_0%,#0a1024_50%,#080c18_100%)]">
       <section className="relative overflow-hidden border-b border-white/5">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(59,130,246,0.2),_transparent_50%)]" />
         <div
@@ -117,9 +127,9 @@ const AboutPage: React.FC = () => {
           </h1>
           <p className="octa-lead mt-6 max-w-3xl text-lg md:text-xl text-slate-300">
             Octasence builds AI-driven structural health monitoring and
-            geotechnical intelligence so owners and operators can move from
-            reactive inspection to predictive risk orchestration—across mining,
-            dams, tunnels, metros, and complex built environments.
+            geotechnical intelligence so owners and operators move from reactive
+            inspection to predictive risk orchestration—across mining, dams,
+            tunnels, metros, and complex built environments.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Button
@@ -147,24 +157,35 @@ const AboutPage: React.FC = () => {
         <div className="max-w-3xl">
           <h2 className="octa-heading text-3xl md:text-4xl">Founders</h2>
           <p className="mt-3 text-slate-400">
-            The team bridging deep domain expertise in infrastructure, AI, and
-            global go-to-market execution.
+            Leaders who combine infrastructure domain depth with AI, product,
+            and global go-to-market experience.
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
           {FOUNDERS.map((f) => (
             <article
               key={f.name}
-              className="octa-panel flex flex-col gap-4 rounded-3xl p-6 md:p-8"
+              className="octa-panel flex flex-col gap-5 rounded-3xl p-6 md:p-8"
             >
-              <Avatar initials={f.initials} />
+              <div className="relative aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80">
+                <Image
+                  src={f.imageSrc}
+                  alt={f.name}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 280px"
+                  priority={f.name === 'Shivaraj Choutagi'}
+                />
+              </div>
               <div>
                 <h3 className="text-xl font-bold text-white">{f.name}</h3>
-                <p className="text-sm font-semibold uppercase tracking-wide text-indigo-300/90">
+                <p className="text-sm font-semibold uppercase tracking-wide text-blue-400/95 mt-1">
                   {f.role}
                 </p>
+                <p className="text-sm leading-relaxed text-slate-300 mt-3">
+                  {f.tagline}
+                </p>
               </div>
-              <p className="text-sm leading-relaxed text-slate-300">{f.bio}</p>
             </article>
           ))}
         </div>
@@ -175,31 +196,33 @@ const AboutPage: React.FC = () => {
           <div className="max-w-3xl">
             <h2 className="octa-heading text-3xl md:text-4xl">Team</h2>
             <p className="mt-3 text-slate-400">
-              Cross-functional builders across product, engineering, and
-              operations—unified around safer, smarter infrastructure.
+              The people behind the product—shipping, supporting, and refining
+              Octasence with customers in the field.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {TEAM.map((m) => (
               <article
                 key={m.name}
-                className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-[#0a1024]/80 p-6"
+                className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-[#0a1024]/85 p-6"
               >
-                <Avatar initials={m.initials} />
+                <TeamAvatar initials={m.initials} />
                 <div>
                   <h3 className="text-lg font-semibold text-white">{m.name}</h3>
-                  <p className="text-xs uppercase tracking-wider text-slate-500">
+                  <p className="text-xs uppercase tracking-wider text-slate-500 mt-0.5">
                     {m.role}
                   </p>
                 </div>
-                <p className="text-sm text-slate-400 flex-1">{m.bio}</p>
+                <p className="text-sm text-slate-300 flex-1 leading-relaxed">
+                  {m.tagline}
+                </p>
                 <a
                   href={m.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-indigo-400 hover:text-indigo-300"
+                  className="text-sm font-medium text-blue-400 hover:text-blue-300"
                 >
-                  LinkedIn →
+                  LinkedIn profile →
                 </a>
               </article>
             ))}
@@ -209,7 +232,7 @@ const AboutPage: React.FC = () => {
 
       <section className={`${mainConfig.containerClass} px-4 py-16 md:py-24`}>
         <div className="grid gap-10 md:grid-cols-2">
-          <div className="octa-panel rounded-3xl p-8 md:p-10">
+          <div className="octa-panel rounded-3xl p-8 md:p-10 border-blue-500/10">
             <h2 className="octa-heading text-2xl md:text-3xl">Vision</h2>
             <p className="mt-4 text-slate-300 leading-relaxed">
               A world where every critical structure is understood in real
@@ -217,7 +240,7 @@ const AboutPage: React.FC = () => {
               confidence backed by agentic AI and trusted data.
             </p>
           </div>
-          <div className="octa-panel rounded-3xl p-8 md:p-10">
+          <div className="octa-panel rounded-3xl p-8 md:p-10 border-blue-500/10">
             <h2 className="octa-heading text-2xl md:text-3xl">Mission</h2>
             <p className="mt-4 text-slate-300 leading-relaxed">
               Deliver industrial-grade monitoring and intelligence that unifies
@@ -228,7 +251,7 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="border-t border-white/5 bg-gradient-to-b from-indigo-950/40 to-[#060814] py-16 md:py-24">
+      <section className="border-t border-white/5 bg-gradient-to-b from-indigo-950/35 to-[#070b1a] py-16 md:py-24">
         <div
           className={`${mainConfig.containerClass} px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-8`}
         >
@@ -245,7 +268,7 @@ const AboutPage: React.FC = () => {
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-white text-slate-900 hover:bg-slate-100 shrink-0"
+            className="rounded-full bg-blue-600 text-white hover:bg-blue-500 shrink-0"
           >
             <Link href="/contact">Get in touch</Link>
           </Button>

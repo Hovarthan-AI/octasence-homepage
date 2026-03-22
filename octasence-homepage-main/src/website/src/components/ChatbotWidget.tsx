@@ -1,9 +1,16 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { sendOctasenceChatMessage } from '@/hooks/useOctasenceChat';
+
+const SUGGESTED_PROMPTS = [
+  'What does Octasence do for infrastructure monitoring?',
+  'How does structural health monitoring work?',
+  'Which industries do you support?',
+  'How can we get in touch with your team?',
+] as const;
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Message {
@@ -183,10 +190,10 @@ const ChatbotWidget: React.FC = () => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 300);
   }, [isOpen]);
 
-  const handleSend = async () => {
-    if (!inputValue.trim()) return;
+  const sendUserMessage = useCallback(async (rawText: string) => {
+    const userText = rawText.trim();
+    if (!userText) return;
 
-    const userText = inputValue;
     const userMsg: Message = {
       id: Date.now().toString(),
       role: 'user',
@@ -222,7 +229,14 @@ const ChatbotWidget: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
+  const handleSend = useCallback(() => {
+    void sendUserMessage(inputValue);
+  }, [inputValue, sendUserMessage]);
+
+  const showSuggestions =
+    messages.length === 1 && messages[0]?.role === 'bot' && !isLoading;
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -364,6 +378,28 @@ const ChatbotWidget: React.FC = () => {
 
               {/* Typing indicator — same SVG logo + bouncing dots */}
               {isLoading && <TypingDots />}
+
+              {showSuggestions && (
+                <div className="flex flex-col gap-2 pt-1">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400 px-1">
+                    Suggested questions
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {SUGGESTED_PROMPTS.map((prompt) => (
+                      <button
+                        key={prompt}
+                        type="button"
+                        disabled={isLoading}
+                        onClick={() => void sendUserMessage(prompt)}
+                        className="text-left text-[13px] leading-snug rounded-xl border border-[#5b6cf3]/35 bg-white px-3 py-2 text-gray-700 hover:bg-[#eef0ff] hover:border-[#5b6cf3]/55 transition-colors disabled:opacity-50 max-w-full"
+                      >
+                        {prompt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div ref={messagesEndRef} />
             </div>
 

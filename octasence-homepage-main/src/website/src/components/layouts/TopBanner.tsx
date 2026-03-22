@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 import LanguageModal from '@/components/dialogs/LanguageModal';
@@ -223,47 +223,38 @@ const TopBanner = () => {
         <div className="container mx-auto max-w-5xl px-2 flex justify-between items-center py-1">
           <div className="flex items-center space-x-4">
             <a
-              href="mailto:info@airqo.net"
+              href="mailto:contact@octasence.com"
               className="hidden md:block text-blue-600 font-medium text-sm hover:text-blue-800 transition-colors"
               aria-label="Contact us via email"
             >
-              (info@airqo.net)
+              contact@octasence.com
             </a>
             <a
-              href="https://www.facebook.com/AirQo"
+              href="https://www.linkedin.com/company/octasence"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 bg-blue-50 rounded-full p-2 hover:bg-blue-200 transition-all"
-              aria-label="Follow us on Facebook"
+              className="text-blue-600 bg-blue-50 rounded-full p-2.5 hover:bg-blue-200 transition-all"
+              aria-label="Follow Octasence on LinkedIn"
             >
-              <FaFacebookF size={14} />
+              <FaLinkedinIn size={18} />
             </a>
             <a
-              href="https://x.com/AirQoProject"
+              href="https://x.com/octasence"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 bg-blue-50 rounded-full p-2 hover:bg-blue-200 transition-all"
-              aria-label="Follow us on Twitter"
+              className="text-blue-600 bg-blue-50 rounded-full p-2.5 hover:bg-blue-200 transition-all"
+              aria-label="Follow Octasence on X"
             >
-              <FaXTwitter size={14} />
+              <FaXTwitter size={18} />
             </a>
             <a
-              href="https://www.linkedin.com/company/airqo/mycompany/"
+              href="https://www.youtube.com/@octasence"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 bg-blue-50 rounded-full p-2 hover:bg-blue-200 transition-all"
-              aria-label="Follow us on LinkedIn"
+              className="text-blue-600 bg-blue-50 rounded-full p-2.5 hover:bg-blue-200 transition-all"
+              aria-label="Octasence on YouTube"
             >
-              <FaLinkedinIn size={14} />
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UCx7YtV55TcqKGeKsDdT5_XQ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 bg-blue-50 rounded-full p-2 hover:bg-blue-200 transition-all"
-              aria-label="Subscribe to our YouTube channel"
-            >
-              <FaYoutube size={14} />
+              <FaYoutube size={18} />
             </a>
           </div>
 

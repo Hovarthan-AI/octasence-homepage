@@ -58,14 +58,12 @@
 body {
   font-family: var(--font-inter);
   background:
-    radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 28%),
-    radial-gradient(
-      circle at 85% 12%,
-      rgba(99, 102, 241, 0.16),
-      transparent 22%
-    ),
-    linear-gradient(180deg, #060814 0%, #08101f 46%, #0b1325 100%);
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(59, 130, 246, 0.22), transparent 45%),
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(99, 102, 241, 0.18), transparent 40%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(79, 70, 229, 0.12), transparent 50%),
+    linear-gradient(180deg, #070b1a 0%, #0a1024 38%, #0c1229 72%, #080c18 100%);
   color: var(--octa-text);
+  min-height: 100vh;
 }
 
 .font-dm-mono {
