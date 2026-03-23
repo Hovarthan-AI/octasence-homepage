@@ -90,38 +90,10 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-white text-xl mb-6">Platform</h3>
             <ul className="space-y-4 text-base">
-              <li>
-                <Link
-                  href="/products"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Smart Sensors
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  AI Platform
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Data APIs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Digital Twin
-                </Link>
-              </li>
+              <li><Link href="/products-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Smart Sensors</Link></li>
+              <li><Link href="/products-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">AI Platform</Link></li>
+              <li><Link href="/products-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Data APIs</Link></li>
+              <li><Link href="/products-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Digital Twin</Link></li>
             </ul>
           </div>
 
@@ -129,85 +101,21 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-white text-xl mb-6">Solutions</h3>
             <ul className="space-y-4 text-base">
-              <li>
-                <Link
-                  href="/solutions"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Infrastructure Intelligence
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solutions"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Mining
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solutions"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Tunnels & Bridges
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solutions"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Dams & Reservoirs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solutions"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Industrial IoT
-                </Link>
-              </li>
-            </ul>
-          </div>
+              <li><Link href="/solutions-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Infrastructure Intelligence</Link></li>
+              <li><Link href="/solutions-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Mining</Link></li>
+              <li><Link href="/solutions-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Tunnels & Bridges</Link></li>
+              <li><Link href="/solutions-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Dams & Reservoirs</Link></li>
+              <li><Link href="/solutions-infrastructure-intelligence" className="text-white/85 font-medium hover:text-white transition-colors">Industrial IoT</Link></li>
+            </ul >
+          </div >
 
           {/* About */}
           <div>
             <h3 className="font-bold text-white text-xl mb-6">About</h3>
             <ul className="space-y-4 text-base">
-              <li>
-                <Link
-                  href="/about-us"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  About OctaSence
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/careers"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/press"
-                  className="text-white/85 font-medium hover:text-white transition-colors"
-                >
-                  Press
-                </Link>
-              </li>
+              <li><Link href="/about-us" className="text-white/85 font-medium hover:text-white transition-colors">About OctaSence</Link></li>
+              <li><Link href="/careers" className="text-white/85 font-medium hover:text-white transition-colors">Careers</Link></li>
+              <li><Link href="/contact" className="text-white/85 font-medium hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import React, { useRef } from 'react';
 
 import ReversibleContentSection from '@/components/sections/ReversibleContentSection';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 import AnalyticsContentSection from './AnalyticsContentSection';
 import HomePlayerSection from './HomePlayerSection';
@@ -43,6 +44,9 @@ const HomePage = () => {
 
   return (
     <div className="w-full home-page">
+      {/* Floating WhatsApp Button */}
+      <WhatsAppButton />
+
       {/* Hero Section */}
       <HomePlayerSection />
 
