@@ -721,22 +721,6 @@ export const METADATA_CONFIGS = {
       type: 'image/png',
     },
   },
-  solutionsNetworkCoverage: {
-    title:
-      'Network Coverage Map | 400+ Air Quality Monitors Across 14 African Countries - AirQo',
-    description:
-      "Explore AirQo's network of 400+ real-time air quality monitoring stations across 14 African countries: Uganda (171 monitors), Kenya (105), Nigeria (46), Ghana (12), Gambia (16), South Africa (17), Senegal (3), Zambia (2), Rwanda (1), Mozambique (1), Burundi (8), Cameroon (19), DRC (1), Ethiopia (6). Live PM2.5 measurements from Kampala, Nairobi, Lagos, Accra, Johannesburg and more.",
-    keywords:
-      'AirQo network coverage, air quality network map Africa, monitoring stations Uganda, monitoring stations Kenya, monitoring stations Nigeria, air quality sensors Ghana, pollution monitors Gambia, air quality South Africa, Rwanda air monitoring, Senegal air quality, Zambia pollution monitors, Mozambique air quality, Burundi air monitoring, Cameroon air quality network, DRC air quality, Ethiopia pollution monitors, Kampala air quality stations, Nairobi monitoring network, Lagos air sensors, Accra air quality monitors, Johannesburg pollution network, 400 air quality monitors, African air quality infrastructure, real-time monitoring sites Africa, air quality coverage map',
-    url: '/solutions/network-coverage',
-    image: {
-      url: 'https://res.cloudinary.com/dbibjvyhm/image/upload/v1742912754/website/photos/Screenshot_2025-03-25_172412_amk2tl.png',
-      alt: 'AirQo Network Coverage Map - 400+ Stations Across 14 African Countries',
-      width: 1200,
-      height: 630,
-      type: 'image/png',
-    },
-  },
   solutionsKampalaStudy: {
     title:
       'Kampala air pollution exposure study | Join the Clean Air Research - AirQo',
