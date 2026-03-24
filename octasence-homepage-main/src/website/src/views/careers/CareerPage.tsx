@@ -2,7 +2,6 @@
 
 import { isBefore, parseISO } from 'date-fns';
 import { motion } from 'framer-motion';
-
 import React, { useEffect, useRef, useState } from 'react';
 import {
   FiArrowRight,
@@ -17,7 +16,7 @@ import {
 } from 'react-icons/fi';
 
 import mainConfig from '@/configs/mainConfigs';
-import { useCareers, useDepartments } from '@/hooks/useApiHooks';
+import { useCareers } from '@/hooks/useApiHooks';
 
 // ─── Globe ───────────────────────────────────────────────────────────────────
 
@@ -202,8 +201,6 @@ const COLLAGE_IMAGES = [
 // office-1 (horizontal) → wide hero
 // others (vertical) → stacked tiles
 
-
-
 const OfficeCollage: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -361,9 +358,6 @@ const PhotoBanner: React.FC = () => {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 const CareerPage: React.FC = () => {
-  const { data: departmentsPage } = useDepartments();
-  const departments = departmentsPage?.results ?? [];
-
   const { data: careersData } = useCareers();
   const careers = careersData?.results ?? [];
 

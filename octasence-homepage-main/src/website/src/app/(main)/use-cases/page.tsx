@@ -14,8 +14,6 @@ const SECTORS = [
   'Multi-Domain',
 ];
 
-
-
 function CaseCard({
   cs,
   index,
