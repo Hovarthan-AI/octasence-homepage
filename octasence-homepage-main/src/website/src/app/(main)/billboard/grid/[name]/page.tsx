@@ -38,9 +38,8 @@ export async function generateMetadata({
   };
 }
 
-export default function GridBillboardPage({ params }: GridBillboardPageProps) {
-  const gridName = params.name;
-
+export default function GridBillboardPage() {
+  // params.name would be available but currently not used in this component
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
       <Suspense fallback={<BillboardSkeleton centered={true} />}></Suspense>

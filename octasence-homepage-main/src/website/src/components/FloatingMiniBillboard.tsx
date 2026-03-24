@@ -250,9 +250,9 @@ export default function FloatingMiniBillboard({
         scroll={true}
       >
         <div
-          className={`bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg ` +
-            `shadow-2xl p-4 w-64 hover:scale-105 transition-all duration-300 relative ${isTransitioning ? 'opacity-0' : 'opacity-100 animate-fade-in'
-            }`}
+          className={`bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg shadow-2xl p-4 w-64 hover:scale-105 transition-all duration-300 relative ${
+            isTransitioning ? 'opacity-0' : 'opacity-100 animate-fade-in'
+          }`}
         >
           {/* Header Section */}
           <div className="flex items-start justify-between mb-2">

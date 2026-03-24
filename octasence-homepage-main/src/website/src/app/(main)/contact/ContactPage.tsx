@@ -83,33 +83,6 @@ const ContactPage: React.FC = () => {
     },
   };
 
-  const cards = [
-    {
-      icon: <FiTablet size={20} />,
-      question: 'I have a question about',
-      detail: 'SHM Sensors',
-      accent: '#2563EB',
-    },
-    {
-      icon: <FiDatabase size={20} />,
-      question: 'I have a question about',
-      detail: 'SHM Data & Analytics',
-      accent: '#0EA5E9',
-    },
-    {
-      icon: <FiStar size={20} />,
-      question: 'I have some',
-      detail: 'feedback',
-      accent: '#6366F1',
-    },
-    {
-      icon: <FiMessageCircle size={20} />,
-      question: 'I have a',
-      detail: 'general inquiry',
-      accent: '#0000FF',
-    },
-  ];
-
   return (
     <div
       className="flex w-full flex-col lg:flex-row"
