@@ -33,6 +33,7 @@ const navItems: NavItem[] = [
       { title: 'About OctaSence', href: '/about-us' },
       { title: 'Careers', href: '/careers' },
       { title: 'Contact Us', href: '/contact' },
+      {title : 'FAQ' , href : '/faq'}
     ],
   },
 ];
@@ -92,6 +93,7 @@ export default function Navbar() {
       )}
     >
       <nav className="relative flex items-center justify-between px-6 py-1.5 lg:px-12 max-w-[1440px] mx-auto">
+        
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <div className="w-28 h-14 md:w-36 md:h-16 flex items-center justify-center overflow-hidden">
@@ -108,6 +110,7 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
+          
           <Link
             href="/"
             className="transition-colors text-base tracking-[0.02em] text-white/78 hover:text-white"
@@ -170,6 +173,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="absolute top-full left-0 w-full bg-[#031629] border-t border-white/10 rounded-b-3xl p-4 md:hidden z-[9998] shadow-[0_12px_40px_rgba(2,6,23,0.35)]">
+            
             <Link
               href="/"
               className="block py-2.5 text-white/80"
