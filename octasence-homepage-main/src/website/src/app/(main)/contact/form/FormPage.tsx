@@ -210,8 +210,8 @@ const FormPage: React.FC = () => {
               Message received!
             </h2>
             <p className="text-white/50 mb-6 text-sm">
-              Your message has been sent successfully. We&apos;ll get back to you
-              soon.
+              Your message has been sent successfully. We&apos;ll get back to
+              you soon.
             </p>
             <button
               onClick={() => setSuccess(false)}
