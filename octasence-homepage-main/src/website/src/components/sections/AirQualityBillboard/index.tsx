@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 
-import { useDailyForecast } from '@/hooks/useApiHooks';
 import { cn } from '@/lib/utils';
 
 // import AirQualityDisplay from './components/AirQualityDisplay';
@@ -15,11 +14,9 @@ import type { AirQualityBillboardProps } from './types';
 
 const AirQualityBillboard = ({
   className,
-  hideControls = false,
   autoRotate = false,
   itemName: propItemName,
   centered = false,
-  hideDropdown = false,
   homepage = false,
 }: AirQualityBillboardProps) => {
   // Custom hooks for state management
@@ -28,17 +25,8 @@ const AirQualityBillboard = ({
     dataType,
     selectedItem,
     dataLoaded,
-    searchQuery,
-    isDropdownOpen,
-    hoveredItemId,
-    copiedItemId,
     setDataLoaded,
-    setHoveredItemId,
-    setSearchQuery,
-    setIsDropdownOpen,
     handleItemSelect,
-    handleCopyUrl,
-    dropdownRef,
   } = controls;
 
   // Data fetching hooks
@@ -48,20 +36,12 @@ const AirQualityBillboard = ({
   // Measurements hook
   const measurements = useMeasurements(dataType, selectedItem);
   const {
-    currentMeasurement,
     measurementsLoading,
     measurementsError,
     forceMeasurementsRefresh,
     resetIndices,
   } = measurements;
 
-  // Forecast data - always call hook; rendering will hide on small screens for homepage
-  const { data: forecastData } = useDailyForecast(
-    currentMeasurement?.site_id || null,
-  );
-
-  // Get current items for selector
-  const currentItems = allGrids;
   const isLoading = gridsLoading;
   const hasError = gridsError;
 
@@ -87,8 +67,8 @@ const AirQualityBillboard = ({
         .replace(/[-_\s]/g, '');
       const normalizedSelectedName = selectedItem
         ? (selectedItem.long_name || selectedItem.name || '')
-          .toLowerCase()
-          .replace(/[-_\s]/g, '')
+            .toLowerCase()
+            .replace(/[-_\s]/g, '')
         : '';
 
       if (!selectedItem || normalizedPropName !== normalizedSelectedName) {
@@ -148,13 +128,6 @@ const AirQualityBillboard = ({
     }
   }, [dataLoaded, isLoading, setDataLoaded, handleItemSelect]);
 
-  // Handle item selection with measurements refresh
-  const onItemSelect = (item: any) => {
-    handleItemSelect(item);
-    resetIndices();
-    forceMeasurementsRefresh();
-  };
-
   // Hide the component if no grids are available after loading
   if (dataLoaded && !allGrids.length) return null;
 
@@ -169,17 +142,17 @@ const AirQualityBillboard = ({
       style={{
         ...(centered
           ? {
-            height: '100dvh', // Dynamic viewport height for mobile browsers
-            padding: 'clamp(0.25rem, 0.5vw, 0.5rem)',
-          }
+              height: '100dvh', // Dynamic viewport height for mobile browsers
+              padding: 'clamp(0.25rem, 0.5vw, 0.5rem)',
+            }
           : homepage
             ? {}
             : {
-              paddingTop: 'clamp(1.5rem, 3vw, 3rem)',
-              paddingBottom: 'clamp(1.5rem, 3vw, 3rem)',
-              paddingLeft: 'clamp(1rem, 2vw, 1rem)',
-              paddingRight: 'clamp(1rem, 2vw, 1rem)',
-            }),
+                paddingTop: 'clamp(1.5rem, 3vw, 3rem)',
+                paddingBottom: 'clamp(1.5rem, 3vw, 3rem)',
+                paddingLeft: 'clamp(1rem, 2vw, 1rem)',
+                paddingRight: 'clamp(1rem, 2vw, 1rem)',
+              }),
       }}
     >
       <div
@@ -190,16 +163,16 @@ const AirQualityBillboard = ({
         style={
           !centered && !homepage
             ? {
-              paddingLeft: 'clamp(1.5rem, 3vw, 1.5rem)',
-              paddingRight: 'clamp(1.5rem, 3vw, 1.5rem)',
-            }
+                paddingLeft: 'clamp(1.5rem, 3vw, 1.5rem)',
+                paddingRight: 'clamp(1.5rem, 3vw, 1.5rem)',
+              }
             : undefined
         }
       >
         {/* Error States - Hidden as per user request, automatic retry in background */}
         {hasError ? null : selectedItem &&
           measurementsError ? null : !dataLoaded ||
-            (selectedItem && measurementsLoading) ? (
+          (selectedItem && measurementsLoading) ? (
           <BillboardSkeleton centered={centered} homepage={homepage} />
         ) : propItemName && !selectedItem ? (
           <BillboardSkeleton centered={centered} homepage={homepage} />

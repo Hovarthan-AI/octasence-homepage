@@ -1,8 +1,4 @@
-import {
-  generateMetadata as createMetadata,
-  generateViewport,
-  METADATA_CONFIGS,
-} from '@/lib/metadata';
+import { generateViewport } from '@/lib/metadata';
 // import NetworkCoveragePage from '@/views/solutions/NetworkCoverage/NetworkCoveragePage';
 
 // Generate metadata using the centralized utility
@@ -12,11 +8,7 @@ import {
 export const viewport = generateViewport();
 
 const page = () => {
-  return (
-    <div>
-      {/* <NetworkCoveragePage /> */}
-    </div>
-  );
+  return <div>{/* <NetworkCoveragePage /> */}</div>;
 };
 
 export default page;
