@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import { useDailyForecast } from '@/hooks/useApiHooks';
 import { cn } from '@/lib/utils';
 
-import AirQualityDisplay from './components/AirQualityDisplay';
-import BillboardHeader from './components/BillboardHeader';
+// import AirQualityDisplay from './components/AirQualityDisplay';
+// import BillboardHeader from './components/BillboardHeader';
 import { useAirQualityData } from './hooks/useAirQualityData';
 import { useBillboardControls } from './hooks/useBillboardControls';
 import { useMeasurements } from './hooks/useMeasurements';
@@ -87,8 +87,8 @@ const AirQualityBillboard = ({
         .replace(/[-_\s]/g, '');
       const normalizedSelectedName = selectedItem
         ? (selectedItem.long_name || selectedItem.name || '')
-            .toLowerCase()
-            .replace(/[-_\s]/g, '')
+          .toLowerCase()
+          .replace(/[-_\s]/g, '')
         : '';
 
       if (!selectedItem || normalizedPropName !== normalizedSelectedName) {
@@ -169,17 +169,17 @@ const AirQualityBillboard = ({
       style={{
         ...(centered
           ? {
-              height: '100dvh', // Dynamic viewport height for mobile browsers
-              padding: 'clamp(0.25rem, 0.5vw, 0.5rem)',
-            }
+            height: '100dvh', // Dynamic viewport height for mobile browsers
+            padding: 'clamp(0.25rem, 0.5vw, 0.5rem)',
+          }
           : homepage
             ? {}
             : {
-                paddingTop: 'clamp(1.5rem, 3vw, 3rem)',
-                paddingBottom: 'clamp(1.5rem, 3vw, 3rem)',
-                paddingLeft: 'clamp(1rem, 2vw, 1rem)',
-                paddingRight: 'clamp(1rem, 2vw, 1rem)',
-              }),
+              paddingTop: 'clamp(1.5rem, 3vw, 3rem)',
+              paddingBottom: 'clamp(1.5rem, 3vw, 3rem)',
+              paddingLeft: 'clamp(1rem, 2vw, 1rem)',
+              paddingRight: 'clamp(1rem, 2vw, 1rem)',
+            }),
       }}
     >
       <div
@@ -190,16 +190,16 @@ const AirQualityBillboard = ({
         style={
           !centered && !homepage
             ? {
-                paddingLeft: 'clamp(1.5rem, 3vw, 1.5rem)',
-                paddingRight: 'clamp(1.5rem, 3vw, 1.5rem)',
-              }
+              paddingLeft: 'clamp(1.5rem, 3vw, 1.5rem)',
+              paddingRight: 'clamp(1.5rem, 3vw, 1.5rem)',
+            }
             : undefined
         }
       >
         {/* Error States - Hidden as per user request, automatic retry in background */}
         {hasError ? null : selectedItem &&
           measurementsError ? null : !dataLoaded ||
-          (selectedItem && measurementsLoading) ? (
+            (selectedItem && measurementsLoading) ? (
           <BillboardSkeleton centered={centered} homepage={homepage} />
         ) : propItemName && !selectedItem ? (
           <BillboardSkeleton centered={centered} homepage={homepage} />
@@ -232,7 +232,7 @@ const AirQualityBillboard = ({
                 gap: 'clamp(0.75rem, 1.5vw, 1.25rem)',
               }}
             >
-              <BillboardHeader
+              {/* <BillboardHeader
                 hideControls={hideControls}
                 selectedItem={selectedItem}
                 items={currentItems}
@@ -256,7 +256,7 @@ const AirQualityBillboard = ({
                 currentMeasurement={currentMeasurement}
                 forecastData={forecastData}
                 homepage={homepage}
-              />
+              /> */}
             </div>
           </div>
         )}
