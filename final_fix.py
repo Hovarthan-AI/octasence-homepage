@@ -31,8 +31,8 @@ if new_content != content:
         updated = f.read()
     print(f"Updated length: {len(updated)}")
     print(f"Now has We'll: {'We' + chr(39) + 'll' in updated}")
-    print(f"Now has We'll: {'We'll' in updated}")
+    print(f"Now has We'll: {'We\'ll' in updated}")
     print(f"Now has We'd: {'We' + chr(39) + 'd' in updated}")
-    print(f"Now has We'd: {'We'd' in updated}")
+    print(f"Now has We'll: {'We\'ll' in updated}")
 else:
     print("No changes needed")

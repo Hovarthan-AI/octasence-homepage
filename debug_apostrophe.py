@@ -29,5 +29,8 @@ else:
     print("\nNo ' found in content")
 
 # Try a direct replacement test
-test_line = "We'll get back to you"
-print(f"\nTest replacement: '{test_line}' -> '{test_line.replace(\"'\", \"'\")}'")
+test_line = "We'll test this"
+
+replaced = test_line.replace("'", "&apos;")
+
+print(f"\nTest replacement: '{test_line}' -> '{replaced}'")

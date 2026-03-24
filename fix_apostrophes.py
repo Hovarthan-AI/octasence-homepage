@@ -15,7 +15,7 @@ if new_content != content:
     with open(file_path, 'w') as f:
         f.write(new_content)
     print("File updated successfully")
-    print(f"Changes made: {content.count('We\\'ll')} We'll -> We'll")
-    print(f"Changes made: {content.count('We\\'d')} We'd -> We'd")
+    print("Changes made:", content.count("We'll"), "We'll -> We&apos;ll")
+    print("Changes made:", content.count("We'd"), "We'd -> We&apos;d")
 else:
     print("No changes needed - file already has escaped apostrophes")

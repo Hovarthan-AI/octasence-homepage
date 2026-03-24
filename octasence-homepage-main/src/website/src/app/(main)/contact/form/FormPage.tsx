@@ -210,7 +210,7 @@ const FormPage: React.FC = () => {
               Message received!
             </h2>
             <p className="text-white/50 mb-6 text-sm">
-              Your message has been sent successfully. We'll get back to you
+              Your message has been sent successfully. We&apos;ll get back to you
               soon.
             </p>
             <button
@@ -275,7 +275,7 @@ const FormPage: React.FC = () => {
               Send a message
             </div>
             <h3 className="text-2xl font-bold text-white tracking-tight">
-              We'd love to hear from you
+              We&apos;d love to hear from you
             </h3>
             <div className="w-16 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-3" />
           </div>

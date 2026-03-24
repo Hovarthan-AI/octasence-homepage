@@ -43,6 +43,6 @@ else:
     print("No We'll or We'd found in form page")
 
 print("\nVerification:")
-print("About page has asset's:", 'asset's' in (new_about if 'new_about' in locals() else about_content))
-print("Form page has We'll:", 'We'll' in form_content)
-print("Form page has We'd:", 'We'd' in form_content)
+print("About page has asset's:", "asset's" in (new_about if 'new_about' in locals() else about_content))
+print("Form page has We'll:", "We'll" in form_content)
+print("Form page has We'd:", "We'd" in form_content)
