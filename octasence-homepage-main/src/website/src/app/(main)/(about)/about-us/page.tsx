@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import PitchDeckDownload from '@/components/layouts/PitchDeckDownload';
+import PitchDeckDownload from '@/components/layouts/PitchdeckDownload';
 import { Button } from '@/components/ui/button';
 import mainConfig from '@/configs/mainConfigs';
 import { IconLinkedin } from '@/lib/icons';
