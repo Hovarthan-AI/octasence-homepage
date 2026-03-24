@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
-import AirQualityBillboard from '@/components/sections/AirQualityBillboard';
+// import AirQualityBillboard from '@/components/sections/AirQualityBillboard';
 import BillboardSkeleton from '@/components/sections/AirQualityBillboard/skeletons/BillboardSkeleton';
 
 interface GridBillboardPageProps {
@@ -43,15 +43,7 @@ export default function GridBillboardPage({ params }: GridBillboardPageProps) {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
-      <Suspense fallback={<BillboardSkeleton centered={true} />}>
-        <AirQualityBillboard
-          hideControls={false}
-          autoRotate={false}
-          itemName={gridName}
-          centered={true}
-          hideDropdown={true}
-        />
-      </Suspense>
+      <Suspense fallback={<BillboardSkeleton centered={true} />}></Suspense>
     </main>
   );
 }

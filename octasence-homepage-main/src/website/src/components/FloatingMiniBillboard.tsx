@@ -1,18 +1,18 @@
 'use client';
 
-import {
-  IconGood,
-  IconModerate,
-  IconUnhealthy,
-  IconVeryUnhealthy,
-  IconHazardous,
-  IconNoValue,
-} from '@/lib/icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import { hexToRgba } from '@/components/sections/AirQualityBillboard/utils';
+import {
+  IconGood,
+  IconHazardous,
+  IconModerate,
+  IconNoValue,
+  IconUnhealthy,
+  IconVeryUnhealthy,
+} from '@/lib/icons';
 import type { Grid } from '@/types/grids';
 import {
   AIR_QUALITY_INFO,
@@ -250,7 +250,8 @@ export default function FloatingMiniBillboard({
         scroll={true}
       >
         <div
-          className={`bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg shadow-2xl p-4 w-64 hover:scale-105 transition-all duration-300 relative ${isTransitioning ? 'opacity-0' : 'opacity-100 animate-fade-in'
+          className={`bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg ` +
+            `shadow-2xl p-4 w-64 hover:scale-105 transition-all duration-300 relative ${isTransitioning ? 'opacity-0' : 'opacity-100 animate-fade-in'
             }`}
         >
           {/* Header Section */}

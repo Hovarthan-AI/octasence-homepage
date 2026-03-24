@@ -12,7 +12,7 @@ import InstallationSection from './sections/InstallationSection';
 import QuickStartSection from './sections/QuickStartSection';
 import StylingSection from './sections/StylingSection';
 import TypeScriptSection from './sections/TypeScriptSection';
-import UtilitiesSection from './sections/UtilitiesSection';
+// import UtilitiesSection from './sections/UtilitiesSection';
 import VueSection from './sections/VueSection';
 
 export default function IconsDocsPage() {
@@ -234,7 +234,6 @@ export default function IconsDocsPage() {
                 <div className="border-t border-gray-200" />
                 <VueSection />
                 <div className="border-t border-gray-200" />
-                <UtilitiesSection />
               </div>
             </div>
           </div>

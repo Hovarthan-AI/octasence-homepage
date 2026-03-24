@@ -8,7 +8,6 @@ import FrameworkTabs from '@/components/packages/FrameworkTabs';
 import StatCard from '@/components/packages/StatCard';
 import { CustomButton } from '@/components/ui';
 import { getAllPackages } from '@/configs/packagesConfig';
-import { IconCheckCircle, IconDownload, IconPackage } from '@/lib/icons';
 
 export default function PackagesPage() {
   const packages = getAllPackages();

@@ -6,7 +6,9 @@ import { useState } from 'react';
 const WhatsAppButton = () => {
   const [hovered, setHovered] = useState(false);
   const phone = '918549002123'; // +91 prefix for India
-  const message = encodeURIComponent("Hi OctaSence, I'd like to learn more about your platform.");
+  const message = encodeURIComponent(
+    'Hi OctaSence, I\'d like to learn more about your platform.',
+  );
   const href = `https://wa.me/${phone}?text=${message}`;
 
   return (

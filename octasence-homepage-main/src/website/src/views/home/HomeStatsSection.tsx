@@ -110,15 +110,17 @@ const HeadingSection: React.FC<{
           <motion.div
             layout
             transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-            className={`absolute bottom-0 h-[3px] bg-[#0F47D7] ${activeTab === 'infrastructure' ? 'left-0 w-1/2' : 'left-1/2 w-1/2'
-              }`}
+            className={`absolute bottom-0 h-[3px] bg-[#0F47D7] ${
+              activeTab === 'infrastructure' ? 'left-0 w-1/2' : 'left-1/2 w-1/2'
+            }`}
           />
           <button
             onClick={() => setActiveTab('infrastructure')}
-            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${activeTab === 'infrastructure'
+            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${
+              activeTab === 'infrastructure'
                 ? 'text-[#08162C]'
                 : 'text-[#587193]'
-              }`}
+            }`}
             style={{ fontFamily: 'Outfit, sans-serif' }}
             type="button"
           >
@@ -126,8 +128,9 @@ const HeadingSection: React.FC<{
           </button>
           <button
             onClick={() => setActiveTab('analytics')}
-            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${activeTab === 'analytics' ? 'text-[#08162C]' : 'text-[#587193]'
-              }`}
+            className={`relative px-4 py-4 text-sm transition-colors md:px-6 md:text-base ${
+              activeTab === 'analytics' ? 'text-[#08162C]' : 'text-[#587193]'
+            }`}
             style={{ fontFamily: 'Outfit, sans-serif' }}
             type="button"
           >

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 import mainConfig from '@/configs/mainConfigs';
@@ -40,8 +39,6 @@ const Highlight = () => {
             loading="lazy"
           />
         </div>
-
-
       </div>
     </div>
   );

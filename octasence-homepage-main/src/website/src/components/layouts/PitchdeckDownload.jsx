@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 /**
  * OctaSence — Investor Deck Download Banner
@@ -11,8 +11,8 @@ import { useState } from "react";
  *   <PitchDeckDownload href="/assets/OctaSence_Investor_Deck_2026.pdf" />
  */
 export default function PitchDeckDownload({
-  href = "/assets/OctaSence_Investor_Deck_2026.pdf",
-  filename = "OctaSence_Investor_Deck_2026.pdf",
+  href = '/assets/OctaSence_Investor_Deck_2026.pdf',
+  filename = 'OctaSence_Investor_Deck_2026.pdf',
 }) {
   const [clicked, setClicked] = useState(false);
 
@@ -57,7 +57,10 @@ export default function PitchDeckDownload({
           text-align: center;
           padding: 48px 40px 40px;
           cursor: pointer;
-          transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+          transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.2s ease;
           -webkit-tap-highlight-color: transparent;
         }
 
@@ -154,7 +157,9 @@ export default function PitchDeckDownload({
           align-items: center;
           justify-content: center;
           margin-bottom: 24px;
-          transition: background 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+          transition:
+            background 0.3s ease,
+            transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .octa-deck-card:hover .octa-deck-icon-wrap {
@@ -199,7 +204,10 @@ export default function PitchDeckDownload({
           font-weight: 700;
           color: #d4f5ee;
           letter-spacing: 0.04em;
-          transition: background 0.25s ease, border-color 0.25s ease, gap 0.25s ease;
+          transition:
+            background 0.25s ease,
+            border-color 0.25s ease,
+            gap 0.25s ease;
         }
 
         .octa-deck-card:hover .octa-deck-cta {
@@ -229,7 +237,9 @@ export default function PitchDeckDownload({
           color: rgba(99, 202, 183, 0.9);
           opacity: 0;
           transform: translateY(6px);
-          transition: opacity 0.35s ease, transform 0.35s ease;
+          transition:
+            opacity 0.35s ease,
+            transform 0.35s ease;
           pointer-events: none;
           min-height: 20px;
         }
@@ -292,7 +302,13 @@ export default function PitchDeckDownload({
 
           {/* Large download icon */}
           <div className="octa-deck-icon-wrap">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M16 5v16m0 0-5.5-5.5M16 21l5.5-5.5"
                 stroke="rgba(99,202,183,0.95)"
@@ -316,13 +332,26 @@ export default function PitchDeckDownload({
           {/* CTA button */}
           <div className="octa-deck-cta">
             <span>Download PDF</span>
-            <svg className="octa-deck-cta-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 3.5v11m0 0-4-4m4 4 4-4" stroke="rgba(99,202,183,0.9)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              className="octa-deck-cta-arrow"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 3.5v11m0 0-4-4m4 4 4-4"
+                stroke="rgba(99,202,183,0.9)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
 
           {/* Confirmed */}
-          <div className={`octa-deck-confirmed${clicked ? " show" : ""}`}>
+          <div className={`octa-deck-confirmed${clicked ? ' show' : ''}`}>
             ✓ Download started
           </div>
 
@@ -331,24 +360,50 @@ export default function PitchDeckDownload({
           <div className="octa-deck-meta-row">
             <span className="octa-deck-meta-item">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <rect x="1.5" y="1" width="9" height="10" rx="1.5" stroke="rgba(99,202,183,0.45)" strokeWidth="1.2"/>
-                <path d="M3.5 4.5h5M3.5 7h3" stroke="rgba(99,202,183,0.45)" strokeWidth="1.2" strokeLinecap="round"/>
+                <rect
+                  x="1.5"
+                  y="1"
+                  width="9"
+                  height="10"
+                  rx="1.5"
+                  stroke="rgba(99,202,183,0.45)"
+                  strokeWidth="1.2"
+                />
+                <path
+                  d="M3.5 4.5h5M3.5 7h3"
+                  stroke="rgba(99,202,183,0.45)"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                />
               </svg>
               16 Slides
             </span>
             <span className="octa-deck-meta-sep" />
             <span className="octa-deck-meta-item">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M6 1.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z" stroke="rgba(99,202,183,0.45)" strokeWidth="1.2"/>
-                <path d="M6 4v2.5l1.5 1" stroke="rgba(99,202,183,0.45)" strokeWidth="1.2" strokeLinecap="round"/>
+                <path
+                  d="M6 1.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"
+                  stroke="rgba(99,202,183,0.45)"
+                  strokeWidth="1.2"
+                />
+                <path
+                  d="M6 4v2.5l1.5 1"
+                  stroke="rgba(99,202,183,0.45)"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                />
               </svg>
               2026 Edition
             </span>
             <span className="octa-deck-meta-sep" />
             <span className="octa-deck-meta-item">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M6 1.5C4 1.5 2.5 3 2.5 5c0 3 3.5 5.5 3.5 5.5S9.5 8 9.5 5c0-2-1.5-3.5-3.5-3.5Z" stroke="rgba(99,202,183,0.45)" strokeWidth="1.2"/>
-                <circle cx="6" cy="5" r="1" fill="rgba(99,202,183,0.45)"/>
+                <path
+                  d="M6 1.5C4 1.5 2.5 3 2.5 5c0 3 3.5 5.5 3.5 5.5S9.5 8 9.5 5c0-2-1.5-3.5-3.5-3.5Z"
+                  stroke="rgba(99,202,183,0.45)"
+                  strokeWidth="1.2"
+                />
+                <circle cx="6" cy="5" r="1" fill="rgba(99,202,183,0.45)" />
               </svg>
               India + EU Markets
             </span>

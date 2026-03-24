@@ -4,7 +4,7 @@ import React from 'react';
 
 import BackButton from '@/components/common/BackButton';
 import StatCard from '@/components/packages/StatCard';
-import { IconDownload, IconGlobe, IconPackage } from '@/lib/icons';
+// import { IconDownload, IconGlobe, IconPackage } from '@/lib/icons';
 
 export default function IconsPackagePage() {
   return (

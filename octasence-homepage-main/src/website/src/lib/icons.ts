@@ -76,7 +76,13 @@ export const IconAlertCircle = AlertCircle;
 export const IconCheck = Check;
 
 // Social icons
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
+import {
+    Facebook,
+    Instagram,
+    Linkedin,
+    Twitter,
+    Youtube,
+} from 'lucide-react';
 export const IconTwitter = Twitter;
 export const IconFacebook = Facebook;
 export const IconLinkedin = Linkedin;
