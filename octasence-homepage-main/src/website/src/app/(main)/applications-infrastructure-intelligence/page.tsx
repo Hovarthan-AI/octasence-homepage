@@ -935,39 +935,37 @@ export default function SectorsPage() {
           className="relative z-10 py-24"
           ref={orbitWrapRef}
           style={{
-  background: `
+            background: `
     radial-gradient(circle at 50% 50%, rgba(79,127,255,0.08), transparent 60%),
     radial-gradient(circle at 20% 30%, rgba(99,102,241,0.08), transparent 50%),
     #0d1520
   `,
-}}
+          }}
         >
           {/* Strobe canvas spans the full section */}
           <StrobeCanvas containerRef={orbitWrapRef} />
           {/* 🔥 Background FX Layer */}
-{/* 🔥 Background FX Layer */}
-<div className="absolute inset-0 pointer-events-none z-0">
+          {/* 🔥 Background FX Layer */}
+          <div className="absolute inset-0 pointer-events-none z-0">
+            {/* Grid overlay */}
+            <div
+              className="absolute inset-0 opacity-[0.05]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }}
+            />
 
-  {/* Grid overlay */}
-  <div
-    className="absolute inset-0 opacity-[0.05]"
-    style={{
-      backgroundImage:
-        'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
-      backgroundSize: '60px 60px',
-    }}
-  />
+            {/* Center glow */}
+            <div className="absolute left-1/2 top-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-blue-500/10 blur-[120px]" />
 
-  {/* Center glow */}
-  <div className="absolute left-1/2 top-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-blue-500/10 blur-[120px]" />
+            {/* Left glow */}
+            <div className="absolute left-[10%] top-[30%] w-[300px] h-[300px] bg-indigo-500/10 blur-[100px]" />
 
-  {/* Left glow */}
-  <div className="absolute left-[10%] top-[30%] w-[300px] h-[300px] bg-indigo-500/10 blur-[100px]" />
-
-  {/* Right glow */}
-  <div className="absolute right-[10%] top-[60%] w-[300px] h-[300px] bg-cyan-500/10 blur-[100px]" />
-
-</div>
+            {/* Right glow */}
+            <div className="absolute right-[10%] top-[60%] w-[300px] h-[300px] bg-cyan-500/10 blur-[100px]" />
+          </div>
 
           <div className="relative z-10 max-w-[1100px] mx-auto px-12">
             <motion.div

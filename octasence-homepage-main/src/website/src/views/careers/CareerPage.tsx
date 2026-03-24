@@ -2,7 +2,7 @@
 
 import { isBefore, parseISO } from 'date-fns';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+
 import React, { useEffect, useRef, useState } from 'react';
 import {
   FiArrowRight,
@@ -57,7 +57,12 @@ const Globe: React.FC<{ rotationOffset: number; isDragging: boolean }> = ({
   const dragOffsetRef = React.useRef(0);
 
   const dots = React.useMemo(() => {
-    const points: { x: number; y: number; z: number; type: 'land' | 'ocean' }[] = [];
+    const points: {
+      x: number;
+      y: number;
+      z: number;
+      type: 'land' | 'ocean';
+    }[] = [];
     const count = 3500;
     for (let i = 0; i < count; i++) {
       const phi = Math.acos(-1 + (2 * i) / count);
@@ -163,10 +168,16 @@ const Globe: React.FC<{ rotationOffset: number; isDragging: boolean }> = ({
       className="w-full flex justify-center"
       style={{
         maskImage: 'radial-gradient(circle, rgb(0,0,0) 65%, rgba(0,0,0,0) 75%)',
-        WebkitMaskImage: 'radial-gradient(circle, rgb(0,0,0) 65%, rgba(0,0,0,0) 75%)',
+        WebkitMaskImage:
+          'radial-gradient(circle, rgb(0,0,0) 65%, rgba(0,0,0,0) 75%)',
       }}
     >
-      <canvas ref={canvasRef} width={800} height={800} className="w-full max-w-[600px] aspect-square" />
+      <canvas
+        ref={canvasRef}
+        width={800}
+        height={800}
+        className="w-full max-w-[600px] aspect-square"
+      />
     </div>
   );
 };
@@ -191,16 +202,7 @@ const COLLAGE_IMAGES = [
 // office-1 (horizontal) → wide hero
 // others (vertical) → stacked tiles
 
-const COLLAGE_LAYOUT = [
-  { colSpan: 'col-span-4', rowSpan: 'row-span-1' }, // HERO (office-1)
 
-  { colSpan: 'col-span-1', rowSpan: 'row-span-2' }, // tall
-  { colSpan: 'col-span-1', rowSpan: 'row-span-2' }, // tall
-  { colSpan: 'col-span-2', rowSpan: 'row-span-2' }, // BIG focal image
-
-  { colSpan: 'col-span-2', rowSpan: 'row-span-1' }, // wide
-  { colSpan: 'col-span-2', rowSpan: 'row-span-1' }, // wide
-];
 
 const OfficeCollage: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -211,7 +213,7 @@ const OfficeCollage: React.FC = () => {
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -220,7 +222,6 @@ const OfficeCollage: React.FC = () => {
 
   return (
     <div ref={sectionRef} className="w-full px-4 md:px-8 lg:px-12 pb-16">
-
       {/* HEADER */}
       <div
         className="mb-10"
@@ -314,7 +315,6 @@ const PhotoBanner: React.FC = () => {
 
   return (
     <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-10">
-      
       {/* ANIMATION */}
       <style>{`
         @keyframes marquee-scroll {
@@ -340,8 +340,8 @@ const PhotoBanner: React.FC = () => {
             key={idx}
             className="flex-shrink-0 overflow-hidden rounded-2xl group"
             style={{
-              width: '18vw',   // 🔥 responsive width
-              height: '18vw',  // 🔥 keeps it square
+              width: '18vw', // 🔥 responsive width
+              height: '18vw', // 🔥 keeps it square
               minWidth: '140px',
               maxWidth: '260px',
             }}
@@ -361,20 +361,21 @@ const PhotoBanner: React.FC = () => {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 const CareerPage: React.FC = () => {
-  const router = useRouter();
-  const { data: departmentsPage, isLoading: departmentsLoading } = useDepartments();
+  const { data: departmentsPage } = useDepartments();
   const departments = departmentsPage?.results ?? [];
 
-  const { data: careersData, isLoading: careersLoading } = useCareers();
+  const { data: careersData } = useCareers();
   const careers = careersData?.results ?? [];
 
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState<string>('all');
-
-  const allDepartments = [{ id: 'all', name: 'Open Positions' }, ...(departments || [])];
+  const [selectedDepartmentId] = useState<string>('all');
 
   const isJobOpen = (closingDate?: string) => {
     if (!closingDate) return false;
-    try { return isBefore(new Date(), parseISO(closingDate)); } catch { return false; }
+    try {
+      return isBefore(new Date(), parseISO(closingDate));
+    } catch {
+      return false;
+    }
   };
 
   const filteredJobs = (careers ?? []).filter((career: any) => {
@@ -383,28 +384,26 @@ const CareerPage: React.FC = () => {
     return isOpen && career.department?.id == selectedDepartmentId;
   });
 
-  const groupedJobsByDepartment = filteredJobs?.reduce((acc: any, job: any) => {
-    const departmentName = job.department?.name || 'Open Positions';
-    if (!acc[departmentName]) acc[departmentName] = { jobs: [], openCount: 0 };
-    acc[departmentName].openCount++;
-    acc[departmentName].jobs.push(job);
-    return acc;
-  }, {});
-
-  const isLoading = departmentsLoading || careersLoading;
+  void filteredJobs;
 
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
 
-  const handleMouseDown = (e: React.MouseEvent) => { setIsDragging(true); setStartX(e.clientX); };
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+  };
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     setRotation((prev) => prev + (e.clientX - startX) * 0.5);
     setStartX(e.clientX);
   };
   const handleMouseUp = () => setIsDragging(false);
-  const handleTouchStart = (e: React.TouchEvent) => { setIsDragging(true); setStartX(e.touches[0].clientX); };
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+  };
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
     setRotation((prev) => prev + (e.touches[0].clientX - startX) * 0.5);
@@ -424,12 +423,20 @@ const CareerPage: React.FC = () => {
   const AtmosphericWaves: React.FC = () => (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       <motion.div
-        animate={{ scale: [1, 1.2, 1], x: ['-10%', '10%', '-10%'], y: ['-5%', '5%', '-5%'] }}
+        animate={{
+          scale: [1, 1.2, 1],
+          x: ['-10%', '10%', '-10%'],
+          y: ['-5%', '5%', '-5%'],
+        }}
         transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute -top-1/4 -left-1/4 w-[150%] h-[150%] bg-[radial-gradient(circle_at_30%_50%,#4338ca_0%,transparent_50%)] opacity-30 blur-[120px]"
       />
       <motion.div
-        animate={{ scale: [1.2, 1, 1.2], x: ['10%', '-10%', '10%'], y: ['5%', '-5%', '5%'] }}
+        animate={{
+          scale: [1.2, 1, 1.2],
+          x: ['10%', '-10%', '10%'],
+          y: ['5%', '-5%', '5%'],
+        }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute -bottom-1/4 -right-1/4 w-[150%] h-[150%] bg-[radial-gradient(circle_at_70%_50%,#3b82f6_0%,transparent_50%)] opacity-20 blur-[120px]"
       />
@@ -446,7 +453,13 @@ const CareerPage: React.FC = () => {
       {/* ── Hero ── */}
       <header className="relative overflow-hidden w-full flex flex-col items-center justify-center gap-6 py-20 md:py-40 px-4 text-center">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen"
+          >
             <source src="/videos/career_bg.mp4" type="video/mp4" />
           </video>
           <AtmosphericWaves />
@@ -461,7 +474,8 @@ const CareerPage: React.FC = () => {
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto">
-            Engineering Agentic <span className="text-blue-500">Infrastructure</span>
+            Engineering Agentic{' '}
+            <span className="text-blue-500">Infrastructure</span>
           </h1>
 
           <p className="text-lg md:text-2xl text-blue-500 font-serif italic font-bold tracking-[0.1em] opacity-95 animate-fade-in-up">
@@ -470,9 +484,13 @@ const CareerPage: React.FC = () => {
 
           <div className="max-w-3xl mx-auto space-y-4">
             <p className="text-base md:text-xl text-gray-400 font-medium leading-relaxed italic px-4">
-              &quot;Architecting Intelligent Infrastructure for the Agentic AI Era.{' '}
-              <br className="hidden md:block" />
-              Join the <span className="text-white font-bold not-italic">Octasence</span> engineering team.&quot;
+              &quot;Architecting Intelligent Infrastructure for the Agentic AI
+              Era. <br className="hidden md:block" />
+              Join the{' '}
+              <span className="text-white font-bold not-italic">
+                Octasence
+              </span>{' '}
+              engineering team.&quot;
             </p>
             <p className="text-[10px] md:text-base text-gray-500 tracking-widest uppercase">
               Excellence is our standard &bull; Octasence is our mission
@@ -481,18 +499,28 @@ const CareerPage: React.FC = () => {
 
           <div className="pt-4 md:pt-6">
             <button
-              onClick={() => window.open('https://www.linkedin.com/company/octasence/jobs/', '_blank')}
+              onClick={() =>
+                window.open(
+                  'https://www.linkedin.com/company/octasence/jobs/',
+                  '_blank',
+                )
+              }
               className="group relative px-8 py-4 md:px-10 md:py-5 bg-[#4338ca] hover:bg-[#3d46ab] text-white rounded-full font-black text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-[0_20px_50px_rgba(67,56,202,0.4)] flex items-center gap-4 mx-auto"
             >
               Open Positions
-              <FiArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
+              <FiArrowRight
+                size={24}
+                className="group-hover:translate-x-2 transition-transform"
+              />
             </button>
           </div>
         </div>
       </header>
 
-      <div id="open-positions" className={`space-y-12 md:space-y-24 w-full py-16 md:py-24 ${mainConfig.containerClass} relative`}>
-
+      <div
+        id="open-positions"
+        className={`space-y-12 md:space-y-24 w-full py-16 md:py-24 ${mainConfig.containerClass} relative`}
+      >
         {/* ── Office Photo Collage ── */}
         <OfficeCollage />
 
@@ -509,13 +537,18 @@ const CareerPage: React.FC = () => {
         <div className="px-4 lg:px-8 pb-10 md:pb-20">
           <div
             className="relative bg-white/[0.02] border border-white/10 p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] overflow-hidden"
-            style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
+            style={{
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+            }}
           >
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none" />
             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 flex flex-col mb-12 md:mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Benefits</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+                Benefits
+              </h2>
               <div className="h-1.5 w-16 md:w-24 bg-indigo-600 rounded-full" />
             </div>
 
@@ -533,10 +566,15 @@ const CareerPage: React.FC = () => {
                 <div
                   key={idx}
                   className="flex items-center gap-6 md:gap-8 group animate-fade-in-up"
-                  style={{ animationDelay: `${idx * 100}ms`, animationFillMode: 'both' }}
+                  style={{
+                    animationDelay: `${idx * 100}ms`,
+                    animationFillMode: 'both',
+                  }}
                 >
                   <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500 flex-shrink-0">
-                    {React.cloneElement(benefit.icon as React.ReactElement, { size: 28 })}
+                    {React.cloneElement(benefit.icon as React.ReactElement, {
+                      size: 28,
+                    })}
                   </div>
                   <span className="text-lg md:text-2xl font-bold text-gray-300 group-hover:text-white transition-colors duration-300">
                     {benefit.text}
@@ -580,7 +618,6 @@ const CareerPage: React.FC = () => {
 
         {/* ── Moving Photo Banner ── */}
         <PhotoBanner />
-
       </div>
     </div>
   );

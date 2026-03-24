@@ -1,11 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
 import { Outfit } from 'next/font/google';
+import React, { useState } from 'react';
 
-import Navbar from '@/components/layouts/Navbar';
 import Footer from '@/components/layouts/Footer';
+import Navbar from '@/components/layouts/Navbar';
 
 // ============================================================
 // FONT (PAGE-LEVEL)
@@ -71,9 +71,7 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
           {q}
         </h3>
 
-        <div className="text-white/40 text-xl">
-          {open ? '−' : '+'}
-        </div>
+        <div className="text-white/40 text-xl">{open ? '−' : '+'}</div>
       </button>
 
       <motion.div
@@ -82,9 +80,7 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
         transition={{ duration: 0.3 }}
         className="overflow-hidden"
       >
-        <p className="mt-4 text-white/60 text-[15px] leading-relaxed">
-          {a}
-        </p>
+        <p className="mt-4 text-white/60 text-[15px] leading-relaxed">{a}</p>
       </motion.div>
     </motion.div>
   );
@@ -97,49 +93,45 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
 export default function FAQPage() {
   return (
     <div className={`min-h-screen bg-[#060814] text-white ${outfit.className}`}>
-
       <Navbar />
 
       {/* HERO */}
-<section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
+      <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
+        {/* Background glow (matches other pages) */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-600/20 blur-[120px] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full" />
+        </div>
 
-  {/* Background glow (matches other pages) */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-600/20 blur-[120px] rounded-full" />
-    <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full" />
-  </div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          {/* Pill (consistent with your site) */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-indigo-300 text-[11px] tracking-[0.2em] uppercase mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+            Help Center
+          </div>
 
-  <div className="relative z-10 max-w-4xl mx-auto">
+          {/* Heading */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6 font-medium text-white">
+            Frequently Asked{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+              Questions
+            </span>
+          </h1>
 
-    {/* Pill (consistent with your site) */}
-    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-indigo-300 text-[11px] tracking-[0.2em] uppercase mb-6">
-      <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-      Help Center
-    </div>
+          {/* Subtext */}
+          <p className="text-white/60 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+            Everything you need to know about OctaSence, AI-powered
+            infrastructure intelligence, and predictive safety systems.
+          </p>
 
-    {/* Heading */}
-    <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6 font-medium text-white">
-      Frequently Asked{' '}
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
-        Questions
-      </span>
-    </h1>
-
-    {/* Subtext */}
-    <p className="text-white/60 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-      Everything you need to know about OctaSence, AI-powered
-      infrastructure intelligence, and predictive safety systems.
-    </p>
-
-    {/* Accent divider */}
-    <div className="flex items-center justify-center gap-3 mt-8">
-      <div className="h-px w-12 bg-gradient-to-r from-transparent to-indigo-500" />
-      <div className="w-2 h-2 rounded-full bg-indigo-500" />
-      <div className="h-px w-12 bg-gradient-to-l from-transparent to-indigo-500" />
-    </div>
-
-  </div>
-</section>
+          {/* Accent divider */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-indigo-500" />
+            <div className="w-2 h-2 rounded-full bg-indigo-500" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-indigo-500" />
+          </div>
+        </div>
+      </section>
 
       {/* FAQ SECTION */}
       <main className="px-6 pb-24 max-w-4xl mx-auto space-y-4">
@@ -151,9 +143,7 @@ export default function FAQPage() {
       {/* CTA */}
       <section className="pb-24 text-center px-6">
         <div className="max-w-xl mx-auto">
-          <p className="text-white/50 mb-6">
-            Still have questions?
-          </p>
+          <p className="text-white/50 mb-6">Still have questions?</p>
 
           <a
             href="/contact"

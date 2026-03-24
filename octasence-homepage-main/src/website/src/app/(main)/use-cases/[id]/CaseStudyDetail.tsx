@@ -1,7 +1,7 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FiMessageSquare } from 'react-icons/fi';
 
@@ -806,10 +806,10 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
             <div className="sonar-wave sonar-wave-1" />
             <div className="sonar-wave sonar-wave-2" />
 
-            <FiMessageSquare 
-              size={28} 
-              color="#020617" 
-              style={{ position: 'relative', zIndex: 2 }} 
+            <FiMessageSquare
+              size={28}
+              color="#020617"
+              style={{ position: 'relative', zIndex: 2 }}
             />
           </motion.div>
         </Link>

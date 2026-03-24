@@ -5,11 +5,24 @@ import React from 'react';
 import { FiDatabase, FiMessageCircle, FiStar, FiTablet } from 'react-icons/fi';
 
 const IndiaFlag: React.FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="24" height="16" style={{ borderRadius: 2, flexShrink: 0 }}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 900 600"
+    width="24"
+    height="16"
+    style={{ borderRadius: 2, flexShrink: 0 }}
+  >
     <rect width="900" height="200" y="0" fill="#FF9933" />
     <rect width="900" height="200" y="200" fill="#FFFFFF" />
     <rect width="900" height="200" y="400" fill="#138808" />
-    <circle cx="450" cy="300" r="60" fill="none" stroke="#000080" strokeWidth="4" />
+    <circle
+      cx="450"
+      cy="300"
+      r="60"
+      fill="none"
+      stroke="#000080"
+      strokeWidth="4"
+    />
     {Array.from({ length: 24 }).map((_, i) => {
       const angle = (i * 360) / 24;
       const rad = (angle * Math.PI) / 180;
@@ -30,7 +43,13 @@ const IndiaFlag: React.FC = () => (
 );
 
 const EstoniaFlag: React.FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="24" height="16" style={{ borderRadius: 2, flexShrink: 0 }}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 900 600"
+    width="24"
+    height="16"
+    style={{ borderRadius: 2, flexShrink: 0 }}
+  >
     <rect width="900" height="200" y="0" fill="#0072CE" />
     <rect width="900" height="200" y="200" fill="#000000" />
     <rect width="900" height="200" y="400" fill="#FFFFFF" />
@@ -57,25 +76,55 @@ const ContactPage: React.FC = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
   };
 
   const cards = [
-    { icon: <FiTablet size={20} />, question: 'I have a question about', detail: 'SHM Sensors', accent: '#2563EB' },
-    { icon: <FiDatabase size={20} />, question: 'I have a question about', detail: 'SHM Data & Analytics', accent: '#0EA5E9' },
-    { icon: <FiStar size={20} />, question: 'I have some', detail: 'feedback', accent: '#6366F1' },
-    { icon: <FiMessageCircle size={20} />, question: 'I have a', detail: 'general inquiry', accent: '#0000FF' },
+    {
+      icon: <FiTablet size={20} />,
+      question: 'I have a question about',
+      detail: 'SHM Sensors',
+      accent: '#2563EB',
+    },
+    {
+      icon: <FiDatabase size={20} />,
+      question: 'I have a question about',
+      detail: 'SHM Data & Analytics',
+      accent: '#0EA5E9',
+    },
+    {
+      icon: <FiStar size={20} />,
+      question: 'I have some',
+      detail: 'feedback',
+      accent: '#6366F1',
+    },
+    {
+      icon: <FiMessageCircle size={20} />,
+      question: 'I have a',
+      detail: 'general inquiry',
+      accent: '#0000FF',
+    },
   ];
 
   return (
     <div
       className="flex w-full flex-col lg:flex-row"
-      style={{ height: 'calc(100vh - 132px)', fontFamily: "'Outfit', sans-serif" }}
+      style={{
+        height: 'calc(100vh - 132px)',
+        fontFamily: "'Outfit', sans-serif",
+      }}
     >
       {/* ── LEFT: Video Panel ── */}
       <section className="flex-1 relative flex items-center justify-center p-8 overflow-hidden min-h-[300px] lg:min-h-0">
         <video
-          autoPlay muted loop playsInline
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 w-full h-full object-cover"
           src="/videos/career_bg.mp4"
         />
@@ -83,7 +132,8 @@ const ContactPage: React.FC = () => {
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(96,165,250,0.8) 1px, transparent 1px)',
+            backgroundImage:
+              'radial-gradient(circle, rgba(96,165,250,0.8) 1px, transparent 1px)',
             backgroundSize: '32px 32px',
           }}
         />
@@ -100,7 +150,9 @@ const ContactPage: React.FC = () => {
             Contact Us
           </div>
 
-          <h2 className="text-3xl font-bold mb-6 tracking-tight leading-tight">Get in touch</h2>
+          <h2 className="text-3xl font-bold mb-6 tracking-tight leading-tight">
+            Get in touch
+          </h2>
 
           <div className="mb-4 p-4 rounded-xl border border-white/[0.12] bg-white/[0.06]">
             <p className="text-sm font-bold mb-1.5 flex items-center gap-2 text-white">
@@ -108,8 +160,10 @@ const ContactPage: React.FC = () => {
               India Office
             </p>
             <p className="text-white/80 text-sm font-medium leading-relaxed">
-              No 589, 14th Main Road,<br />
-              Kumaraswamy Layout,<br />
+              No 589, 14th Main Road,
+              <br />
+              Kumaraswamy Layout,
+              <br />
               Bengaluru 560078.
             </p>
           </div>
@@ -120,7 +174,8 @@ const ContactPage: React.FC = () => {
               Estonia Office
             </p>
             <p className="text-white/80 text-sm font-medium leading-relaxed">
-              Ahtri 12, Tallinn 15551,<br />
+              Ahtri 12, Tallinn 15551,
+              <br />
               Estonia.
             </p>
           </div>
@@ -168,7 +223,12 @@ const ContactPage: React.FC = () => {
 
           <div className="space-y-3">
             {cards.map((item, index) => (
-              <CardButton key={index} item={item} onClick={() => handleButtonClick(item.detail)} variants={itemVariants} />
+              <CardButton
+                key={index}
+                item={item}
+                onClick={() => handleButtonClick(item.detail)}
+                variants={itemVariants}
+              />
             ))}
           </div>
         </div>
@@ -179,7 +239,12 @@ const ContactPage: React.FC = () => {
 
 // Extracted to avoid inline ref handlers
 const CardButton: React.FC<{
-  item: { icon: React.ReactNode; question: string; detail: string; accent: string };
+  item: {
+    icon: React.ReactNode;
+    question: string;
+    detail: string;
+    accent: string;
+  };
   onClick: () => void;
   variants: Variants;
 }> = ({ item, onClick, variants }) => {
@@ -191,13 +256,17 @@ const CardButton: React.FC<{
       role="button"
       tabIndex={0}
       onClick={onClick}
-      onKeyDown={(e) => { if (e.key === 'Enter') onClick(); }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') onClick();
+      }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="group flex w-full cursor-pointer items-center p-5 rounded-xl border text-left transition-all duration-300"
       style={{
         borderColor: hovered ? item.accent + '55' : 'rgba(255,255,255,0.07)',
-        background: hovered ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.02)',
+        background: hovered
+          ? 'rgba(255,255,255,0.05)'
+          : 'rgba(255,255,255,0.02)',
         boxShadow: hovered ? `0 0 28px ${item.accent}18` : 'none',
       }}
     >
@@ -214,12 +283,16 @@ const CardButton: React.FC<{
 
       <div className="flex-1">
         <p className="text-white/40 text-xs mb-0.5">{item.question}</p>
-        <p className="text-white font-semibold text-sm tracking-tight">{item.detail}</p>
+        <p className="text-white font-semibold text-sm tracking-tight">
+          {item.detail}
+        </p>
       </div>
 
       <span
         className="text-base ml-3 transition-all duration-300"
-        style={{ color: hovered ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.15)' }}
+        style={{
+          color: hovered ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.15)',
+        }}
       >
         →
       </span>
