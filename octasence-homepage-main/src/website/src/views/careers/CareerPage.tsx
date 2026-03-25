@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   FiArrowRight,
   FiBookOpen,
+  FiMail,
   FiDollarSign,
   FiHome,
   FiMonitor,
@@ -17,6 +18,10 @@ import {
 
 import mainConfig from '@/configs/mainConfigs';
 import { useCareers } from '@/hooks/useApiHooks';
+
+export const metadata = {
+  title: 'Jobs at Octasence',
+};
 
 // ─── Globe ───────────────────────────────────────────────────────────────────
 
@@ -218,7 +223,7 @@ const OfficeCollage: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="w-full px-4 md:px-8 lg:px-12 pb-16">
+    <div ref={sectionRef} className="w-full px-4 md:px-8 lg:px-12">
       {/* HEADER */}
       <div
         className="mb-10"
@@ -251,6 +256,8 @@ const OfficeCollage: React.FC = () => {
         {/* subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       </motion.div>
+
+      
 
       {/* GRID */}
       <motion.div
@@ -518,6 +525,37 @@ const CareerPage: React.FC = () => {
         {/* ── Office Photo Collage ── */}
         <OfficeCollage />
 
+        {/* ── Octasence Statement ── */}
+      <div className="w-full px-4 md:px-8 lg:px-12 py-16">
+        <div className="max-w-5xl mx-auto text-center">
+          
+          <p className="
+            text-2xl md:text-4xl lg:text-5xl 
+            leading-[1.3] md:leading-[1.25] 
+            font-medium 
+            text-white 
+            tracking-tight
+          ">
+            To be one of us is to embrace challenge, embody intelligence, and move quickly. 
+            It means you see technology as a means, but the end is always making an impact 
+            in our clients&apos; most pressing challenges. We want you to feel empowered, 
+            be free to embrace your inner-entrepreneur, and drive to deliver solutions 
+            that you are proud of.
+          </p>
+
+          <p className="
+            mt-8 
+            text-lg md:text-xl 
+            text-indigo-400 
+            font-semibold 
+            tracking-wide
+          ">
+            This is what Octasence is all about.
+          </p>
+
+        </div>
+      </div>
+
         {/* ── Divider ── */}
         <div className="w-full flex justify-center py-4 md:py-8 pointer-events-none">
           <div className="relative w-4/5 h-[2px] bg-gradient-to-r from-transparent via-indigo-600 to-transparent">
@@ -609,6 +647,62 @@ const CareerPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* ── Drop Your CV ── */}
+<div className="px-4 lg:px-8">
+  <div
+    className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10 p-10 md:p-20 text-center"
+    style={{
+      background:
+        'radial-gradient(ellipse at 60% 0%, rgba(99,102,241,0.18) 0%, transparent 70%), #0b0f24',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+    }}
+  >
+    {/* Decorative glows */}
+    <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
+    <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
+
+    {/* Icon */}
+    <div className="relative z-10 mx-auto mb-8 w-20 h-20 flex items-center justify-center rounded-3xl bg-indigo-500/10 border border-indigo-500/30">
+      <FiMail size={34} className="text-indigo-400" />
+    </div>
+
+    {/* Heading */}
+    <div className="relative z-10 space-y-4 mb-10">
+      <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+        Don&apos;t see a{' '}
+        <span className="text-indigo-400">role that fits?</span>
+      </h2>
+      <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        We&apos;re always on the lookout for exceptional talent. Send us your CV
+        and tell us why you&apos;d be a great addition to the Octasence team
+        &mdash; we read every application.
+      </p>
+    </div>
+
+    {/* CTA */}
+    <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      
+        <a href="mailto:admin@octasence.com?subject=CV%20Submission%20-%20Octasence&amp;body=Hi%20Octasence%20team%2C%0A%0APlease%20find%20my%20CV%20attached.%0A%0A"
+        className="group flex items-center gap-3 px-8 py-4 md:px-10 md:py-5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full font-black text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-[0_20px_50px_rgba(99,102,241,0.35)]"
+      >
+        <FiMail size={22} />
+        Drop your CV
+        <FiArrowRight
+          size={20}
+          className="group-hover:translate-x-1 transition-transform"
+        />
+      </a>
+
+      <span className="text-sm text-gray-500 font-medium tracking-widest uppercase">
+        admin@octasence.com
+      </span>
+    </div>
+  </div>
+</div>
+
+        
 
         {/* ── Moving Photo Banner ── */}
         <PhotoBanner />

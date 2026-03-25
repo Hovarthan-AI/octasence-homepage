@@ -929,7 +929,7 @@ export const METADATA_CONFIGS = {
   },
   careers: {
     title:
-      'Jobs at AirQo Uganda | Environmental Careers Kampala - Data Science, Engineering Jobs Kenya',
+      'Jobs at Octasence',
     description:
       "Join AirQo's team in Kampala, Uganda and Nairobi, Kenya. 50+ professionals combating African air pollution. Open positions: data science, engineering, research, community engagement. Work from Kampala office or remote across Uganda, Kenya, Nigeria. Competitive Uganda salaries, international benefits. Impact 60M+ Africans.",
     keywords:
