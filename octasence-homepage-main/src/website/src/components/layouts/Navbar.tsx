@@ -38,7 +38,7 @@ const navItems: NavItem[] = [
   },
 ];
 
-// ── Dropdown (unchanged for About) ────────────────────────────────────────────
+// ── Dropdown ─────────────────────────────────────────
 
 function Dropdown({ label, items }: { label: string; items: DropdownItem[] }) {
   return (
@@ -56,7 +56,9 @@ function Dropdown({ label, items }: { label: string; items: DropdownItem[] }) {
             >
               <div>{item.title}</div>
               {item.description && (
-                <div className="text-sm text-white/45">{item.description}</div>
+                <div className="text-sm text-white/45">
+                  {item.description}
+                </div>
               )}
             </Link>
           ))}
@@ -66,7 +68,7 @@ function Dropdown({ label, items }: { label: string; items: DropdownItem[] }) {
   );
 }
 
-// ── Navbar ────────────────────────────────────────────────────────────────────
+// ── Navbar ───────────────────────────────────────────
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -92,16 +94,18 @@ export default function Navbar() {
           : 'bg-transparent',
       )}
     >
-      <nav className="relative flex items-center justify-between px-6 py-1.5 lg:px-12 max-w-[1440px] mx-auto">
-        {/* Logo */}
+      {/* ✅ Navbar height kept tight */}
+      <nav className="relative flex items-center justify-between px-6 py-2 lg:px-12 max-w-[1440px] mx-auto">
+        
+        {/* 🔥 Bigger Logo WITHOUT increasing navbar height */}
         <Link href="/" className="flex items-center">
-          <div className="w-28 h-14 md:w-36 md:h-16 flex items-center justify-center overflow-hidden">
+          <div className="relative flex items-center justify-center">
             <Image
               src="/assets/images/logo.avif"
               alt="OctaSence logo"
-              width={144}
-              height={144}
-              className="h-full w-full object-contain"
+              width={300}
+              height={300}
+              className="h-16 md:h-20 w-auto object-contain scale-125 md:scale-150 origin-left"
               priority
             />
           </div>

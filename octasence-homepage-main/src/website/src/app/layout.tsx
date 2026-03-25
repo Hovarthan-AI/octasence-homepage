@@ -25,12 +25,12 @@ const FloatingMiniBillboardWrapper = lazy(
 const interFont = localFont({
   src: [
     {
-      path: '../../public/fonts/Inter-VariableFont_opsz,wght.ttf',
+      path: '../fonts/Inter-VariableFont_opsz,wght.ttf',
       style: 'normal',
       weight: '100 900',
     },
     {
-      path: '../../public/fonts/Inter-Italic-VariableFont_opsz,wght.ttf',
+      path: '../fonts/Inter-Italic-VariableFont_opsz,wght.ttf',
       style: 'italic',
       weight: '100 900',
     },

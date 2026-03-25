@@ -3,7 +3,7 @@ import {
   generateViewport,
   METADATA_CONFIGS,
 } from '@/lib/metadata';
-import PP_Page from '@/views/legal/PP_Page';
+import PP_Page from '@/views/legal/PRP_Page';
 
 // Generate metadata using the centralized utility
 export const metadata = createMetadata(METADATA_CONFIGS.privacyPolicy);

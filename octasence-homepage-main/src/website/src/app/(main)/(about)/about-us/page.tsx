@@ -1,17 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import PitchDeckDownload from '@/components/layouts/PitchdeckDownload';
 import { Button } from '@/components/ui/button';
 import mainConfig from '@/configs/mainConfigs';
-import { IconLinkedin } from '@/lib/icons';
+import PitchDeckDownload from '@/components/layouts/PitchDeckDownload';
+import DownloadsRow from '@/components/layouts/Downloadsrow';
+
 
 type Founder = {
   name: string;
   role: string;
   tagline: string;
   imageSrc: string;
-  linkedin?: string;
 };
 
 const FOUNDERS: Founder[] = [
@@ -21,7 +21,6 @@ const FOUNDERS: Founder[] = [
     tagline:
       'Mining and AI leader turning field reality into predictive infrastructure intelligence.',
     imageSrc: '/assets/images/Shivraj.jpeg',
-    linkedin: 'https://www.linkedin.com/in/shivaraj-choutagi/',
   },
   {
     name: 'Harsh Vardhan',
@@ -29,7 +28,6 @@ const FOUNDERS: Founder[] = [
     tagline:
       'Twenty years shipping agentic platforms—from PropTech to SHM—for mission-critical systems.',
     imageSrc: '/assets/images/WhatsApp Image 2026-03-23 at 17.20.20.jpeg',
-    linkedin: 'https://www.linkedin.com/in/harsh-vardhan87/',
   },
   {
     name: 'Wolfgang Staufer',
@@ -37,7 +35,6 @@ const FOUNDERS: Founder[] = [
     tagline:
       'Scales deep-tech ventures globally—engineering rigor with board-level commercial execution.',
     imageSrc: '/assets/images/wolfgang.jpeg',
-    linkedin: 'https://www.linkedin.com/in/wstaufer/',
   },
   {
     name: 'Vasiliy Bezlyudnyy',
@@ -101,14 +98,6 @@ const TEAM: TeamMember[] = [
       'Shapes interfaces and narratives so complex SHM feels obvious to real users.',
     initials: 'DJ',
   },
-  {
-    name: 'Aishwarya T.',
-    role: 'Engineering',
-    linkedin: 'https://www.linkedin.com/in/aishwarya-t/',
-    tagline:
-      'Builds scalable backend systems and data pipelines for real-time infrastructure monitoring.',
-    initials: 'AT',
-  },
 ];
 
 function TeamAvatar({
@@ -165,7 +154,7 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      <PitchDeckDownload href="/assets/OctaSence_Investor_Deck_2026.pdf" />
+      <DownloadsRow/>
 
       <section
         className={`${mainConfig.containerClass} px-4 py-16 md:py-24 space-y-12`}
@@ -201,17 +190,6 @@ const AboutPage: React.FC = () => {
                 <p className="text-sm leading-relaxed text-slate-300 mt-3">
                   {f.tagline}
                 </p>
-                {f.linkedin && (
-                  <a
-                    href={f.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 mt-3"
-                  >
-                    <IconLinkedin className="w-4 h-4" />
-                    LinkedIn
-                  </a>
-                )}
               </div>
             </article>
           ))}
@@ -278,90 +256,7 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="border-y border-white/5 bg-white/[0.02] py-16 md:py-24">
-        <div className={`${mainConfig.containerClass} px-4 space-y-12`}>
-          <div className="max-w-3xl">
-            <h2 className="octa-heading text-3xl md:text-4xl">
-              Frequently Asked Questions
-            </h2>
-            <p className="mt-3 text-slate-400">
-              Common questions about Octasence, our technology, and how we help
-              infrastructure teams.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="octa-panel rounded-2xl p-6 border-blue-500/10">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                What does Octasence do?
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                Octasence provides industrial-grade monitoring and intelligence
-                for critical infrastructure. We unify sensors, AI models, and
-                workflows to give operators real-time visibility into structural
-                health, predict failures, and enable proactive maintenance.
-              </p>
-            </div>
-            <div className="octa-panel rounded-2xl p-6 border-blue-500/10">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Which industries do you serve?
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                We serve infrastructure-intensive industries including mining,
-                energy, transportation, construction, and utilities. Our
-                platform is designed for any organization managing critical
-                physical assets that require continuous monitoring and risk
-                assessment.
-              </p>
-            </div>
-            <div className="octa-panel rounded-2xl p-6 border-blue-500/10">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                How does your AI technology work?
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                Our agentic AI analyzes sensor data in real-time, detects
-                anomalies, predicts potential failures, and recommends actions.
-                It learns from historical patterns and adapts to each
-                asset&apos;s unique behavior, providing actionable intelligence
-                rather than just alerts.
-              </p>
-            </div>
-            <div className="octa-panel rounded-2xl p-6 border-blue-500/10">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                What types of sensors do you support?
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                We support a wide range of sensors including vibration, strain,
-                tilt, temperature, acoustic, and environmental sensors. Our
-                platform is sensor-agnostic and can integrate with existing
-                monitoring systems through APIs and standard protocols.
-              </p>
-            </div>
-            <div className="octa-panel rounded-2xl p-6 border-blue-500/10">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                How quickly can we deploy Octasence?
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                Deployment time varies based on complexity, but typical pilot
-                deployments can be operational within weeks. Our team works
-                closely with yours to ensure smooth integration with your
-                existing infrastructure and workflows.
-              </p>
-            </div>
-            <div className="octa-panel rounded-2xl p-6 border-blue-500/10">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Do you offer on-premise or cloud solutions?
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                We offer both cloud-based and on-premise deployment options. Our
-                cloud platform provides scalability and automatic updates, while
-                on-premise solutions meet strict data residency and security
-                requirements for sensitive environments.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       <section className="border-t border-white/5 bg-gradient-to-b from-indigo-950/35 to-[#070b1a] py-16 md:py-24">
         <div
